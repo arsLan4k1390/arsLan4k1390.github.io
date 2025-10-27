@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Verification Codes</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 40px; background: #fafafa; }
+  h1 { font-size: 22px; }
+  table { border-collapse: collapse; width: 100%; margin-top: 20px; background: white; }
+  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
+  th { background: #eee; }
+  pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-size: 13px; }
+  #info { margin-bottom: 10px; font-family: monospace; }
+</style>
+</head>
+<body>
+  <h1>Verification Codes</h1>
+  <div id="info">
+    Refresh interval: 15 seconds<br>
+    Last refreshed: <span id="lastRef">—</span>
+  </div>
+  <table id="codes">
+    <thead>
+      <tr><th>Code</th><th>Time (UTC)</th><th>Service message</th></tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+<script>
+
+const DEPLOY_ID = "AKfycbyta6ALIgmvJHEZcdLLXGINH3PGOL4PiEMZrH-49l9cSDmYzBIyXYX1-fuKeEfN-62Rgw";
+const API_URL = `https://script.google.com/macros/s/${DEPLOY_ID}/exec`;
+const TOKEN = "XSj4eaZcPetus4qP5ajUEdVqKZW99MYs";
+
+const tbody = document.querySelector("#codes tbody");
+const lastRef = document.getElementById("lastRef");
+
+function showData(data) {
+  if (data.error) {
+    tbody.innerHTML = `<tr><td colspan="3">Error: ${data.error}</td></tr>`;
+    return;
+  }
+
+  lastRef.textContent = formatDateUTC(new Date().toISOString());
+
+  const sorted = (data.entries || []).sort((a, b) => new Date(b.timeUtc) - new Date(a.timeUtc));
+
+  tbody.innerHTML = sorted.map(e => `
+    <tr>
+      <td>${e.code || ''}</td>
+        <td>${e.timeUtc ? formatDateUTC(e.timeUtc) : ''}</td>
+      <td><pre>${escapeHtml(e.serviceMessage || '')}</pre></td>
+    </tr>
+  `).join('');
+}
+
+function formatDateUTC(isoString) {
+  const d = new Date(isoString);
+  const pad = n => n.toString().padStart(2, '0');
+  const day = pad(d.getUTCDate());
+  const month = pad(d.getUTCMonth() + 1); // месяцы с 0
+  const year = d.getUTCFullYear();
+  const hours = pad(d.getUTCHours());
+  const minutes = pad(d.getUTCMinutes());
+  const seconds = pad(d.getUTCSeconds());
+  return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+}
+
+function escapeHtml(s) {
+  const clean = s.replace(/\n\s*\n/g, '\n'); // убираем двойные переносы
+  return clean.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// запуск и автообновление через JSONP
+function refresh() {
+  const script = document.createElement('script');
+  script.src = `${API_URL}?token=${encodeURIComponent(TOKEN)}&callback=showData&_=${Date.now()}`;
+  document.body.appendChild(script);
+  // удаляем <script> после загрузки, чтобы не засорять DOM
+  script.onload = () => document.body.removeChild(script);
+}
+
+refresh();
+setInterval(refresh, 15000);
+</script>
+</body>
+</html>
