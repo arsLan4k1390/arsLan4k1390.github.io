@@ -10,22 +10,26 @@
 <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 <style>
-body {
-    padding-top: 60px;
-    font-family: Roboto, sans-serif;
-}
-.lang-switch {
-    margin-bottom: 20px;
-}
-.lang-switch button {
-    margin-right: 10px;
-}
+  body {
+      padding-top: 60px;
+      font-family: 'Roboto', sans-serif;
+  }
+  .lang-switch {
+      margin-bottom: 20px;
+  }
+  .lang-switch button {
+      margin-right: 10px;
+  }
+  .highlight {
+          color: #872847;
+          font-weight: bold;
+  }
 </style>
 
 <script>
 function switchLang(lang) {
-    document.getElementById('lang-en').style.display = (lang==='en') ? 'block' : 'none';
-    document.getElementById('lang-ru').style.display = (lang==='ru') ? 'block' : 'none';
+    document.getElementById('lang-en').style.display = (lang === 'en') ? 'block' : 'none';
+    document.getElementById('lang-ru').style.display = (lang === 'ru') ? 'block' : 'none';
     document.title = (lang==='ru') 
         ? 'Политика конфиденциальности Cherrygram' 
         : 'Cherrygram Privacy Policy';
