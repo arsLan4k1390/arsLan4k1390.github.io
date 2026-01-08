@@ -1,0 +1,167 @@
+<!DOCTYPE HTML>
+<head>
+<title>Cherrygram Donation Terms</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+
+<style>
+    body {
+        padding-top: 60px;
+        font-family: 'Roboto', sans-serif;
+    }
+    .lang-switch {
+        margin-bottom: 20px;
+    }
+    .lang-switch button {
+        margin-right: 10px;
+    }
+    .highlight {
+        color: #872847;
+        font-weight: bold;
+    }
+</style>
+
+<script>
+    function switchLang(lang) {
+        document.getElementById('lang-en').style.display = (lang === 'en') ? 'block' : 'none';
+        document.getElementById('lang-ru').style.display = (lang === 'ru') ? 'block' : 'none';
+    }
+</script>
+
+</head>
+
+<body onload="switchLang('en')">
+
+<div class="container">
+
+    <!-- Кнопки переключения языка -->
+    <div class="lang-switch">
+        <button class="btn btn-default" onclick="switchLang('en')">English</button>
+        <button class="btn btn-default" onclick="switchLang('ru')">Русский</button>
+    </div>
+
+    <!-- ================= ENGLISH ================= -->
+    <div id="lang-en">
+
+        <h1>Cherrygram Donation Terms</h1>
+        <br>
+
+        <p>
+            Cherrygram is an independent project developed and maintained on a voluntary basis.
+            Users may choose to support the project by making a
+            <span class="highlight">voluntary donation</span>.
+        </p>
+
+        <p>
+            A donation is <span class="highlight">not a purchase</span> of any goods, services,
+            subscriptions, or digital content.
+        </p>
+
+        <h3>1. Donations</h3>
+        <p>
+            Donations are made voluntarily and are intended solely to support the development
+            of the Cherrygram project.
+            <span class="highlight">All donations are final and non-refundable</span>.
+        </p>
+
+        <h3>2. Bonus Features</h3>
+        <p>
+            As a token of appreciation, donors may receive optional bonus features,
+            such as interface customizations or visual badges.
+        </p>
+
+        <p>
+            Bonus features:
+        </p>
+        <ul>
+            <li>Cherrygram badge or epic badge</li>
+            <li>Compact or alternative message menu layouts</li>
+            <li>Gift Marketplace button</li>
+            <li>Message filtering tools</li>
+        </ul>
+
+        <p>
+            These features are provided on an
+            <span class="highlight">“as is”</span> and
+            <span class="highlight">“as available”</span> basis
+            and may change, stop working, or be removed at any time.
+        </p>
+
+        <h3>3. No Guarantees</h3>
+        <ul>
+            <li>No guaranteed availability of bonus features</li>
+            <li>No lifetime or permanent access</li>
+            <li>No entitlement created by donation</li>
+        </ul>
+
+        <h3>4. Acceptance</h3>
+        <p>
+            By making a donation, you confirm that you understand and accept these terms.
+            If you do not agree, please do not make a donation.
+        </p>
+
+    </div>
+
+    <!-- ================= RUSSIAN ================= -->
+    <div id="lang-ru">
+
+        <h1>Условия донатов Cherrygram</h1>
+        <br>
+
+        <p>
+            Cherrygram — это независимый проект, развиваемый на добровольной основе.
+            Пользователь может поддержать проект, сделав
+            <span class="highlight">добровольное пожертвование (донат)</span>.
+        </p>
+
+        <p>
+            Донат <span class="highlight">не является покупкой</span> товаров, услуг,
+            подписок или цифрового контента.
+        </p>
+
+        <h3>1. Донаты</h3>
+        <p>
+            Донаты являются добровольной формой поддержки проекта.
+            <span class="highlight">Все донаты безвозвратны</span>,
+            независимо от использования приложения или состояния функций.
+        </p>
+
+        <h3>2. Бонусные функции</h3>
+        <p>
+            В знак благодарности пользователю могут быть предоставлены
+            дополнительные бонусные возможности.
+        </p>
+
+        <ul>
+            <li>Значок Cherrygram или эпический значок</li>
+            <li>Компактное или альтернативное меню сообщений</li>
+            <li>Кнопка «Маркетплейс подарков»</li>
+            <li>Фильтрация сообщений</li>
+        </ul>
+
+        <p>
+            Бонусные функции предоставляются
+            <span class="highlight">«как есть»</span> и
+            <span class="highlight">без гарантий</span>.
+            Они могут быть изменены, временно недоступны или удалены.
+        </p>
+
+        <h3>3. Отсутствие гарантий</h3>
+        <ul>
+            <li>Стабильная работа бонусных функций не гарантируется</li>
+            <li>Пожизненный доступ не предоставляется</li>
+            <li>Донат не создаёт обязательств со стороны разработчика</li>
+        </ul>
+
+        <h3>4. Принятие условий</h3>
+        <p>
+            Совершая донат, пользователь подтверждает согласие с данными условиями.
+            Если условия не принимаются — донат совершать не следует.
+        </p>
+
+    </div>
+
+</div>
+</body>
+</html>
