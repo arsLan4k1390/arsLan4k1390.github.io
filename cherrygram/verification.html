@@ -2,82 +2,84 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Verification Codes</title>
 <style>
-  body { font-family: Arial, sans-serif; margin: 40px; background: #fafafa; }
-  h1 { font-size: 22px; }
-  table { border-collapse: collapse; width: 100%; margin-top: 20px; background: white; }
-  th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
-  th { background: #eee; }
-  pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-size: 13px; }
-  #info { margin-bottom: 10px; font-family: monospace; }
+body { font-family: Arial, sans-serif; margin: 40px; background: #fafafa; }
+h1 { font-size: 22px; }
+table { border-collapse: collapse; width: 100%; margin-top: 20px; background: white; }
+th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
+th { background: #eee; }
+pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-size: 13px; }
+#info { margin-bottom: 10px; font-family: monospace; }
+#status { color: #b00020; }
 </style>
 </head>
 <body>
-  <h1>Verification Codes</h1>
-  <div id="info">
-    Refresh interval: 15 seconds<br>
-    Last refreshed: <span id="lastRef">—</span>
-  </div>
-  <table id="codes">
-    <thead>
-      <tr><th>Code</th><th>Time (UTC)</th><th>Service message</th></tr>
-    </thead>
-    <tbody></tbody>
-  </table>
+<h1>Verification Codes</h1>
+<div id="info">
+Refresh interval: 15 seconds<br>
+Last refreshed: <span id="lastRef">—</span><br>
+<span id="status"></span>
+</div>
+
+<table id="codes">
+<thead>
+<tr><th>Code</th><th>Time (UTC)</th><th>Service message</th></tr>
+</thead>
+<tbody></tbody>
+</table>
 
 <script>
+// Deploy → Manage deployments → Web app URL: .../macros/s/<DEPLOY_ID>/exec
+const DEPLOY_ID = "AKfycbxMcV_KFM9u2i6SaKYA3G-nVqiZlm2HEmb1GTYrtEfVQuqhVQ4sdKWQw0eUVX6ssRM6"; // update here: https://script.google.com
+// Должен совпадать со значением SECRET_TOKEN в Script Properties
+const TOKEN = "5NfkUTRAamkW0VI7zKE1S1giTnfU8u7n";
 
-const DEPLOY_ID = "AKfycbwClbzoTfay5_jOpPhZFUgwCeujyxr6HE9XjGj3idWwUfuZNAFQALSdcKnv7vEcOVWiXw"; // update here: https://script.google.com
 const API_URL = `https://script.google.com/macros/s/${DEPLOY_ID}/exec`;
-const TOKEN = "XSj4eaZcPetus4qP5ajUEdVqKZW99MYs";
-
 const tbody = document.querySelector("#codes tbody");
 const lastRef = document.getElementById("lastRef");
+const statusEl = document.getElementById("status");
 
-function showData(data) {
-  if (data.error) {
-    tbody.innerHTML = `<tr><td colspan="3">Error: ${data.error}</td></tr>`;
-    return;
-  }
-
-  lastRef.textContent = formatDateUTC(new Date().toISOString());
-
-  const sorted = (data.entries || []).sort((a, b) => new Date(b.timeUtc) - new Date(a.timeUtc));
-
-  tbody.innerHTML = sorted.map(e => `
-    <tr>
-      <td>${e.code || ''}</td>
-        <td>${e.timeUtc ? formatDateUTC(e.timeUtc) : ''}</td>
-      <td><pre>${escapeHtml(e.serviceMessage || '')}</pre></td>
-    </tr>
-  `).join('');
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
 function formatDateUTC(isoString) {
   const d = new Date(isoString);
   const pad = n => n.toString().padStart(2, '0');
-  const day = pad(d.getUTCDate());
-  const month = pad(d.getUTCMonth() + 1); // месяцы с 0
-  const year = d.getUTCFullYear();
-  const hours = pad(d.getUTCHours());
-  const minutes = pad(d.getUTCMinutes());
-  const seconds = pad(d.getUTCSeconds());
-  return `${day}.${month}.${year} ${hours}:${minutes}:${seconds}`;
+  return `${pad(d.getUTCDate())}.${pad(d.getUTCMonth() + 1)}.${d.getUTCFullYear()} ` +
+         `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}`;
 }
 
-function escapeHtml(s) {
-  const clean = s.replace(/\n\s*\n/g, '\n'); // убираем двойные переносы
-  return clean.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function showData(data) {
+  if (data.error) {
+    statusEl.textContent = "Error: " + data.error;
+    return;
+  }
+  statusEl.textContent = "";
+  lastRef.textContent = formatDateUTC(new Date().toISOString());
+
+  const sorted = (data.entries || []).sort((a, b) => new Date(b.timeUtc) - new Date(a.timeUtc));
+  tbody.innerHTML = sorted.map(e => `
+    <tr>
+      <td>${escapeHtml(e.code || '')}</td>
+      <td>${e.timeUtc ? formatDateUTC(e.timeUtc) : ''}</td>
+      <td><pre>${escapeHtml((e.serviceMessage || '').replace(/\n\s*\n/g, '\n'))}</pre></td>
+    </tr>
+  `).join('');
 }
 
-// запуск и автообновление через JSONP
+// JSONP-запрос; если скрипт не загрузился или упал, покажем причину на странице
 function refresh() {
   const script = document.createElement('script');
   script.src = `${API_URL}?token=${encodeURIComponent(TOKEN)}&callback=showData&_=${Date.now()}`;
+  script.onload = () => script.remove();
+  script.onerror = () => {
+    statusEl.textContent = "Backend unreachable: check DEPLOY_ID, deployment access (Anyone) and script authorization";
+    script.remove();
+  };
   document.body.appendChild(script);
-  // удаляем <script> после загрузки, чтобы не засорять DOM
-  script.onload = () => document.body.removeChild(script);
 }
 
 refresh();
