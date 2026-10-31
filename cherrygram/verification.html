@@ -5,34 +5,69 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Verification Codes</title>
 <style>
-body { font-family: Arial, sans-serif; margin: 40px; background: #fafafa; }
-h1 { font-size: 22px; }
-table { border-collapse: collapse; width: 100%; margin-top: 20px; background: white; }
-th, td { border: 1px solid #ccc; padding: 8px; text-align: left; vertical-align: top; }
-th { background: #eee; }
-pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-size: 13px; }
-#info { margin-bottom: 10px; font-family: monospace; }
-#status { color: #b00020; }
+:root {
+  --bg: #f5f6f8; --card: #fff; --text: #1d1f23; --muted: #6b7280;
+  --border: #e3e5e9; --head: #f0f1f4; --accent: #2563eb; --error: #b00020;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161a; --card: #1d2026; --text: #e8eaed; --muted: #9aa0a9;
+    --border: #2d3139; --head: #252932; --accent: #6ea0ff; --error: #ff6b81;
+  }
+}
+* { box-sizing: border-box; }
+body {
+  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  margin: 0; padding: 32px 20px; background: var(--bg); color: var(--text);
+}
+.wrap { max-width: 960px; margin: 0 auto; }
+h1 { font-size: 22px; margin: 0 0 12px; }
+#info {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 16px;
+}
+#info b { color: var(--text); font-weight: 600; }
+#status { color: var(--error); }
+.table-wrap {
+  overflow-x: auto; background: var(--card);
+  border: 1px solid var(--border); border-radius: 12px;
+}
+table { border-collapse: collapse; width: 100%; }
+th, td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
+tr:last-child td { border-bottom: none; }
+th { background: var(--head); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+td.code {
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 20px; font-weight: 700; letter-spacing: .12em; color: var(--accent); white-space: nowrap;
+}
+td.time { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 13px; white-space: nowrap; }
+td.time small { color: var(--muted); }
+pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-size: 13px; color: var(--muted); font-family: inherit; }
+.empty { text-align: center; color: var(--muted); padding: 24px; }
 </style>
 </head>
 <body>
+<div class="wrap">
 <h1>Verification Codes</h1>
 <div id="info">
-Refresh interval: 15 seconds<br>
-Last refreshed: <span id="lastRef">—</span><br>
+Refresh interval: <b>15 seconds</b><br>
+Last refreshed: <b id="lastRef">—</b><br>
 <span id="status"></span>
 </div>
 
+<div class="table-wrap">
 <table id="codes">
 <thead>
-<tr><th>Code</th><th>Time (UTC)</th><th>Service message</th></tr>
+<tr><th>Code</th><th>Time</th><th>Service message</th></tr>
 </thead>
 <tbody></tbody>
 </table>
+</div>
+</div>
 
 <script>
 // Deploy → Manage deployments → Web app URL: .../macros/s/<DEPLOY_ID>/exec
-const DEPLOY_ID = "AKfycbxMcV_KFM9u2i6SaKYA3G-nVqiZlm2HEmb1GTYrtEfVQuqhVQ4sdKWQw0eUVX6ssRM6"; // update here: https://script.google.com
+const DEPLOY_ID = "AKfycbxNZs6l4aMHsJA8BbwoYIE9XoC60y_kpp5Xsib80f2m0-xHtB-DCOXMeJDNaZvzguuD"; // update here: https://script.google.com
 // Должен совпадать со значением SECRET_TOKEN в Script Properties
 const TOKEN = "5NfkUTRAamkW0VI7zKE1S1giTnfU8u7n";
 
@@ -45,10 +80,11 @@ function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
+// 31.10.2026, 14:05:09
 function formatDateUTC(isoString) {
   const d = new Date(isoString);
   const pad = n => n.toString().padStart(2, '0');
-  return `${pad(d.getUTCDate())}.${pad(d.getUTCMonth() + 1)}.${d.getUTCFullYear()} ` +
+  return `${pad(d.getUTCDate())}.${pad(d.getUTCMonth() + 1)}.${d.getUTCFullYear()}, ` +
          `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}`;
 }
 
@@ -58,13 +94,17 @@ function showData(data) {
     return;
   }
   statusEl.textContent = "";
-  lastRef.textContent = formatDateUTC(new Date().toISOString());
+  lastRef.textContent = formatDateUTC(new Date().toISOString()) + " UTC";
 
   const sorted = (data.entries || []).sort((a, b) => new Date(b.timeUtc) - new Date(a.timeUtc));
+  if (!sorted.length) {
+    tbody.innerHTML = `<tr><td colspan="3" class="empty">No codes yet</td></tr>`;
+    return;
+  }
   tbody.innerHTML = sorted.map(e => `
     <tr>
-      <td>${escapeHtml(e.code || '')}</td>
-      <td>${e.timeUtc ? formatDateUTC(e.timeUtc) : ''}</td>
+      <td class="code">${escapeHtml(e.code || '—')}</td>
+      <td class="time">${e.timeUtc ? formatDateUTC(e.timeUtc) + ' <small>UTC</small>' : ''}</td>
       <td><pre>${escapeHtml((e.serviceMessage || '').replace(/\n\s*\n/g, '\n'))}</pre></td>
     </tr>
   `).join('');
