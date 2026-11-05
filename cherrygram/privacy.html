@@ -1,219 +1,357 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Cherrygram Privacy Policy</title>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
-
+<meta name="color-scheme" content="light dark">
+<title>Cherrygram Privacy Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
+  :root {
+    --cherry: #872847;
+    --cherry-soft: rgba(135, 40, 71, 0.08);
+    --cherry-line: rgba(135, 40, 71, 0.22);
+    --bg: #f6f4f5;
+    --card: #ffffff;
+    --text: #1f1a1c;
+    --muted: #6b6266;
+    --line: #ebe6e8;
+    --shadow: 0 1px 2px rgba(31, 26, 28, 0.04), 0 8px 24px rgba(31, 26, 28, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --cherry: #e0789a;
+      --cherry-soft: rgba(224, 120, 154, 0.10);
+      --cherry-line: rgba(224, 120, 154, 0.28);
+      --bg: #141112;
+      --card: #1e1a1c;
+      --text: #f1ecee;
+      --muted: #a89ea2;
+      --line: #2e282b;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
-      padding-top: 60px;
-      padding-bottom: 60px;
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      color: #333;
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   }
-  .lang-switch {
-      margin-bottom: 30px;
-      text-align: center;
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; }
+
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 17px; letter-spacing: -0.01em; }
+  .brand-dot { width: 28px; height: 28px; border-radius: 9px; background: var(--cherry); display: grid; place-items: center; }
+  .brand-dot svg { width: 16px; height: 16px; fill: #fff; }
+
+  .lang { display: inline-flex; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .lang button {
+    border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600;
+    padding: 6px 14px; border-radius: 999px; cursor: pointer;
   }
-  .lang-switch button {
-      margin: 0 5px;
-      min-width: 100px;
+  .lang button[aria-pressed="true"] { background: var(--cherry); color: #fff; }
+
+  header.hero { margin-bottom: 24px; }
+  h1 { font-size: clamp(28px, 6vw, 38px); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 10px; }
+  .updated { color: var(--muted); font-size: 14px; margin: 0; }
+  .lead { color: var(--muted); margin: 14px 0 0; }
+
+  .summary {
+    background: var(--cherry-soft); border: 1px solid var(--cherry-line); border-radius: 16px;
+    padding: 20px 22px; margin: 28px 0;
   }
-  .highlight {
-      color: #872847;
-      font-weight: bold;
+  .summary h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--cherry); margin: 0 0 12px; }
+  .summary ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .summary li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; }
+  .summary li svg { width: 18px; height: 18px; margin-top: 4px; stroke: var(--cherry); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+  section.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+    padding: 22px 22px 8px; margin-bottom: 14px;
   }
-  h1 { color: #872847; margin-bottom: 25px; text-align: center; font-weight: bold; }
-  h3 { margin-top: 40px; border-left: 4px solid #872847; padding-left: 15px; color: #872847; font-weight: bold; }
-  h4 { margin-top: 25px; font-weight: bold; color: #555; }
-  h5 { font-weight: bold; color: #872847; margin-top: 20px; text-decoration: underline; }
-  .contact-section { background: #f9f9f9; padding: 20px; border-radius: 8px; margin-top: 40px; border: 1px solid #eee; }
-  a { color: #872847; text-decoration: none; font-weight: bold; }
+  section.card h2 { display: flex; align-items: baseline; gap: 12px; font-size: 19px; letter-spacing: -0.01em; margin: 0 0 10px; }
+  .num { color: var(--cherry); font-variant-numeric: tabular-nums; font-size: 15px; font-weight: 700; min-width: 22px; }
+  section.card p, section.card ul { margin: 0 0 14px; }
+  section.card ul { padding-left: 20px; }
+  section.card li { margin-bottom: 6px; }
+  h3 { font-size: 15px; margin: 16px 0 6px; }
+  strong { font-weight: 600; }
+  .accent { color: var(--cherry); font-weight: 600; }
+  a { color: var(--cherry); font-weight: 600; text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .footer-note { margin-top: 50px; font-size: 0.9em; color: #777; font-style: italic; }
+
+  .note {
+    border-left: 3px solid var(--cherry); background: var(--cherry-soft); border-radius: 0 10px 10px 0;
+    padding: 10px 14px; margin: 0 0 14px; font-size: 15px;
+  }
+  dl.data { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin: 0 0 14px; }
+  dl.data dt { font-weight: 600; }
+  dl.data dd { margin: 0; color: var(--muted); }
+  @media (max-width: 520px) {
+    dl.data { grid-template-columns: 1fr; gap: 2px; }
+    dl.data dd { margin-bottom: 8px; }
+    section.card, .summary { padding-left: 18px; padding-right: 18px; }
+  }
+
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 4px 0 14px; }
+  .contact a {
+    display: block; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--text); font-weight: 500;
+  }
+  .contact a:hover { border-color: var(--cherry-line); text-decoration: none; background: var(--cherry-soft); }
+  .contact small { display: block; color: var(--muted); font-size: 13px; font-weight: 500; }
+  @media (max-width: 520px) { .contact { grid-template-columns: 1fr; } }
+
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 28px; }
+
+  [data-l="ru"] { display: none; }
+  body.ru [data-l="en"] { display: none; }
+  body.ru [data-l="ru"] { display: block; }
+  body.ru span[data-l="ru"] { display: inline; }
 </style>
-
-<script>
-function switchLang(lang) {
-    document.getElementById('lang-en').style.display = (lang === 'en') ? 'block' : 'none';
-    document.getElementById('lang-ru').style.display = (lang === 'ru') ? 'block' : 'none';
-    document.title = (lang==='ru') 
-        ? 'Политика конфиденциальности Cherrygram' 
-        : 'Cherrygram Privacy Policy';
-}
-</script>
-
 </head>
-<body onload="switchLang('en')">
+<body>
+<div class="wrap">
 
-<div class="container">
+  <div class="top">
+    <div class="brand">
+      <span class="brand-dot" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="8" cy="16" r="5"/><circle cx="16.5" cy="15" r="4.5"/><path d="M8 11c1-5 4-8 9-9-1 3-1 6 0 8" stroke="#fff" stroke-width="1.6" fill="none"/></svg></span>
+      Cherrygram
+    </div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set="en" aria-pressed="true">English</button>
+      <button type="button" data-set="ru" aria-pressed="false">Русский</button>
+    </div>
+  </div>
 
-    <div class="lang-switch">
-        <button class="btn btn-default" onclick="switchLang('en')">English</button>
-        <button class="btn btn-default" onclick="switchLang('ru')">Русский</button>
+  <!-- ================= ENGLISH ================= -->
+  <main data-l="en">
+    <header class="hero">
+      <h1>Privacy Policy</h1>
+      <p class="updated">Last updated: November 2026</p>
+      <p class="lead">This policy explains what happens to your data when you use Cherrygram, an independent, unofficial Android client for Telegram, and sets out the basic rules for using the app.</p>
+    </header>
+
+    <div class="summary">
+      <h2>In short</h2>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Your account, messages and contacts go <strong>directly to Telegram</strong>. The Cherrygram developer has no servers that receive them.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Cherrygram settings, backups and caches are stored <strong>only on your device</strong>.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Ads are provided by <strong>AdsGram</strong>, which receives your <strong>IP address</strong>, Telegram ID and basic device info.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Cherrygram is free and provided as is. The developer may restrict access to the app.</span></li>
+      </ul>
     </div>
 
-    <div id="lang-en">
-        <h1 id="dev_page_title">Cherrygram Privacy Policy</h1>
-        <br />
-        <p>This Privacy Policy sets out how we, <strong>“Cherrygram”</strong>, use and protect your personal data that you provide to us, or that is otherwise obtained or generated by us, in connection with your use of cloud-based messaging services (the <strong>“Services”</strong>). For the purposes of this Privacy Policy, <strong>‘we’</strong>, <strong>‘us’</strong> and <strong>‘our’</strong> refers to Cherrygram, and <strong>‘you’</strong> refers to you, the user of the Services.</p>
+    <section class="card">
+      <h2><span class="num">1</span>Who we are</h2>
+      <p>Cherrygram is a free, non-commercial app developed independently on a voluntary basis. It is <strong>not affiliated with, endorsed by, or operated by Telegram</strong>. In this policy, “we”, “us” and “the developer” refer to the developer of Cherrygram, and “you” refers to the person using the app.</p>
+    </section>
 
-        <h3>What Personal Data We Use</h3>
-        <h4>1. Basic Account Data</h4>
-        <p>Cherrygram is a communication app based on Telegram API. You provide your mobile number and basic account data (which may include profile name, profile picture and about information) to create a Telegram account. <span class="highlight">We do not collect, store, or use any of this information.</span></p>
+    <section class="card">
+      <h2><span class="num">2</span>Your Telegram account and messages</h2>
+      <p>Cherrygram works through the official Telegram API. Your phone number, profile, messages, media, calls, contacts, two-step verification email and all other account data are exchanged <strong>directly between the app on your device and Telegram's servers</strong>.</p>
+      <p>The developer of Cherrygram <span class="accent">does not collect, receive, store or have access to</span> this data and does not know who you talk to or what you send.</p>
+      <p>How Telegram processes your data is governed by the <a href="https://telegram.org/privacy" target="_blank" rel="noopener">Telegram Privacy Policy</a> and the <a href="https://telegram.org/tos" target="_blank" rel="noopener">Telegram Terms of Service</a>, which also apply to you when you use Cherrygram.</p>
+      <h3>Secret chats</h3>
+      <p>Secret chats use Telegram's end-to-end encryption. Their contents can only be read on the devices of the participants.</p>
+    </section>
 
-        <h4>2. Your E-mail Address</h4>
-        <p>When you enable 2-step-verification for your account or store documents using the Telegram Passport feature, you can opt to set up a password recovery email. We do not collect, store, or use any of this information.</p>
+    <section class="card">
+      <h2><span class="num">3</span>Data stored on your device</h2>
+      <p>Cherrygram keeps some data locally, for example:</p>
+      <ul>
+        <li>app settings and settings backups you export;</li>
+        <li>media and other caches.</li>
+      </ul>
+      <p>This data <strong>never leaves your device</strong> through Cherrygram and is not sent to the developer. It is removed when you clear the app's data or uninstall it. Backup files you export are fully under your control.</p>
+    </section>
 
-        <h4>3. Your Messages</h4>
-        <h5>3.1. Cloud Chats</h5>
-        <p>Cherrygram is a cloud service based on Telegram API. Telegram stores messages, photos, videos and documents from your <em>cloud chats</em> on Telegram servers so that you can access your data from any of your devices anytime without having to rely on third-party backups. All data is stored heavily encrypted on Telegram servers. We do not collect, store, or use any of this information, and we do not know who or when you messaged via cloud chats.</p>
+    <section class="card">
+      <h2><span class="num">4</span>Permissions</h2>
+      <p>Cherrygram asks for permissions (contacts, location, camera, microphone, notifications and so on) only when a feature needs them. Contacts and locations you choose to share are sent to Telegram, not to the developer. You can revoke permissions at any time in your Android settings, and stop contact syncing in <em>Settings → Privacy and Security → Data Settings</em>.</p>
+    </section>
 
-        <h5>3.2. Secret Chats</h5>
-        <p><em>Secret chats</em> use end-to-end encryption. This means that all data is encrypted with a key that only you and the recipient know. There is <strong>no way</strong> for us or anybody else without direct access to your device to learn what content is being sent in those messages. We do not store your secret chats on our servers. We do not collect, store, or use any of this information, and we do not know who or when you messaged via secret chats.</p>
+    <section class="card">
+      <h2><span class="num">5</span>Service requests</h2>
+      <p>To keep the app working, Cherrygram may download service files (for example, update information or configuration) from resources maintained by the developer, such as public code hosting. These requests <strong>do not include your account data</strong>; any checks based on them are performed on your device. As with any internet request, the hosting provider can see your IP address.</p>
+      <p>The developer may also send a service command to the app, for example to refresh its configuration immediately. Such commands are processed on your device, only trigger the service requests described above and do not give anyone access to your account or data.</p>
+    </section>
 
-        <h5>3.3. Media in Secret Chats</h5>
-        <p>When you send photos, videos or files via secret chats, before being uploaded to Telegram servers, each item is encrypted with a separate key, not known to the server. This key and the file’s location are then encrypted again, this time with the secret chat’s key — and sent to your recipient. Your recipient can then download and decipher the file. This means that the file is technically on one of Telegram’s servers, but it looks like a piece of random indecipherable garbage to everyone except for you and the recipient. We don’t know what this random data stands for and we have no idea which particular chat it belongs to. We periodically purge this random data from our servers to save disk space. We do not collect, store, or use any of this information.</p>
+    <section class="card">
+      <h2><span class="num">6</span>Advertising (AdsGram)</h2>
+      <p>Cherrygram may show ads provided by <a href="https://adsgram.ai" target="_blank" rel="noopener">AdsGram</a>. To select and display an ad, AdsGram receives:</p>
+      <dl class="data">
+        <dt>Telegram account</dt><dd>Your Telegram ID, app language and Telegram Premium status</dd>
+        <dt>Network</dt><dd>Your IP address, used to show ads relevant to your country or city</dd>
+        <dt>Device</dt><dd>Device model and Android version</dd>
+        <dt>Screen</dt><dd>Viewport size in pixels and current screen brightness</dd>
+        <dt>Battery</dt><dd>Battery level and charging state</dd>
+      </dl>
+      <p>AdsGram uses this data for ad targeting, protection against bots and correct rendering of banners. Your IP address reaches AdsGram's servers directly from your device whenever an ad is loaded. The developer does not receive or store any of this data. AdsGram's own privacy terms apply to its processing.</p>
+    </section>
 
-        <h5>3.4. Public Chats</h5>
-        <p>In addition to private messages, Cherrygram also supports public channels and public groups. All public chats are cloud chats. Like everything on Cherrygram, the data you post in public communities is encrypted, both in storage and in transit — but everything you post in public will be accessible to everyone. We do not collect, store, or use any of this information.</p>
+    <section class="card">
+      <h2><span class="num">7</span>Third-party services and donations</h2>
+      <p>The app may contain links to third-party services, for example to buy Telegram Stars or Telegram Premium, or to support the project. These services are run by independent providers that the developer does not control or endorse.</p>
+      <ul>
+        <li>Any transaction with them is made <span class="accent">at your own risk</span> and under their terms.</li>
+        <li>Questions about such purchases should be addressed to the respective provider.</li>
+        <li>Donations to Cherrygram are governed by the separate <a href="donation-terms.html">Donation Terms</a>.</li>
+      </ul>
+    </section>
 
-        <h4>4. Phone Number and Contacts</h4>
-        <p>Cherrygram uses phone numbers as unique identifiers so that it is easy for you to switch from SMS and other messaging apps and retain your social graph. We ask your permission before syncing your contacts. Telegram stores your up-to-date contacts in order to notify you as soon as one of your contacts signs up for Cherrygram and to properly display names in notifications. We do not store any of this data about you or your contacts.</p>
-        <p>You can always stop syncing contacts or delete them from Telegram's servers in Settings &gt; Privacy &amp; Security &gt; Data Settings.</p>
+    <section class="card">
+      <h2><span class="num">8</span>Using Cherrygram</h2>
+      <p>Cherrygram is provided free of charge, <strong>“as is”</strong> and “as available”, without warranties of any kind. Features may change, stop working or be removed, including as a result of changes on Telegram's side.</p>
+      <p>The developer reserves the right, <span class="accent">at their sole discretion and without giving reasons</span>, to restrict or end any user's access to Cherrygram or to some of its features.</p>
+      <p>This only affects Cherrygram. <strong>Your Telegram account and your data are not affected</strong>, and you can keep using Telegram through the official apps or other clients.</p>
+      <p>To the extent permitted by law, the developer is not liable for any loss or damage resulting from the use of, or inability to use, the app.</p>
+    </section>
 
-        <h4>5. Location Data</h4>
-        <p>If you share a location in a chat, this location data is treated like other messages in cloud or secret chats respectively. If you share your Live Location in any chat or turn on <em>’Make Myself Visible’</em> in People Nearby, Cherrygram will use your data to display your location to those users with whom you are sharing it, even when the App is closed – for as long as you keep these optional features activated.</p>
-        
-        <h3>Third-Party Payment Services</h3>
-        <p>
-            The application may provide links or buttons to <span class="highlight">third-party services</span> for purchasing in-app currencies or assets (Telegram Stars, Telegram Premium). 
-            Please be advised:
-        </p>
-        <ul>
-            <li>These services are operated by independent third parties. The developer of Cherrygram does not control, monitor, or endorse them.</li>
-            <li>Any transaction you make is <span class="highlight">at your own risk</span>. We are not responsible for financial losses, scams, or failed deliveries from these providers.</li>
-            <li>All support requests regarding third-party purchases must be directed to the respective service provider.</li>
-        </ul>
+    <section class="card">
+      <h2><span class="num">9</span>Changes to this policy</h2>
+      <p>This policy may be updated from time to time. The date at the top of the page shows when it was last changed. By continuing to use Cherrygram after an update, you accept the updated version.</p>
+    </section>
 
-        <h3>AdsGram Advertising Notice</h3>
-        <p>
-            To select and correctly display advertisements, the <span class="highlight">https://adsgram.ai</span> service will receive access to the following data:
-        </p>
-        <ul>
-            <li><span class="highlight">Telegram App Status:</span> Your Telegram ID, app language, and Telegram Premium subscription status.</li>
-            <li><span class="highlight">Network:</span> Your IP address (used to deliver relevant ads based on your country/city).</li>
-            <li><span class="highlight">Device Info:</span> Model and Android OS version.</li>
-            <li><span class="highlight">Interface & Screen:</span> Viewport dimensions (width/height in pixels) and current screen brightness level.</li>
-            <li><span class="highlight">Battery:</span> Battery percentage and charging state.</li>
-        </ul>
-        <p>This data is required by the AdsGram API for ad targeting, device verification (anti-bot protection), and proper banner rendering.</p>
+    <section class="card">
+      <h2><span class="num">10</span>Contact</h2>
+      <p>If you have any questions about this policy, get in touch:</p>
+      <div class="contact">
+        <a href="mailto:cherrygramofficial@gmail.com"><small>Email</small>cherrygramofficial@gmail.com</a>
+        <a href="https://t.me/CherrygramSupport" target="_blank" rel="noopener"><small>Telegram</small>Cherrygram Support</a>
+      </div>
+    </section>
+  </main>
 
-        <h3>Acceptance</h3>
-        <p>
-            By proceeding with a donation or using third-party payment links, you confirm that you:
-        </p>
-        <ul>
-            <li>Understand the <span class="highlight">voluntary nature</span> of the support and <span class="highlight">waive any right to claim a refund</span> or demand the stable operation of bonus features.</li>
-            <li>Fully acknowledge all associated risks and <span class="highlight">waive any financial or legal claims</span> against the developer of Cherrygram.</li>
-        </ul>
+  <!-- ================= RUSSIAN ================= -->
+  <main data-l="ru">
+    <header class="hero">
+      <h1>Политика конфиденциальности</h1>
+      <p class="updated">Последнее обновление: ноябрь 2026</p>
+      <p class="lead">Здесь описано, что происходит с вашими данными при использовании Cherrygram — независимого неофициального Android-клиента Telegram, — а также основные правила использования приложения.</p>
+    </header>
 
-        <div class="contact-section">
-            <h3>Contact Us</h3>
-            <p>If you have any questions about this Privacy Policy, you can contact us here:</p>
-            <p>1. Email: <a href="mailto:cherrygramofficial@gmail.com">cherrygramofficial@gmail.com</a></p>
-            <p>2. Telegram chat: <a href="https://t.me/CherrygramSupport">Cherrygram Support</a></p>
-        </div>
-
-        <hr>
-        <p class="footer-note text-center">Last updated: July 2026</p>
+    <div class="summary">
+      <h2>Коротко</h2>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Аккаунт, сообщения и контакты передаются <strong>напрямую в Telegram</strong>. У разработчика Cherrygram нет серверов, которые их получают.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Настройки, резервные копии и кэш Cherrygram хранятся <strong>только на вашем устройстве</strong>.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Реклама предоставляется сервисом <strong>AdsGram</strong>, который получает ваш <strong>IP-адрес</strong>, Telegram ID и базовые данные об устройстве.</span></li>
+        <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span>Cherrygram бесплатен и предоставляется «как есть». Разработчик может ограничить доступ к приложению.</span></li>
+      </ul>
     </div>
 
-    <div id="lang-ru" style="display:none;">
-        <h1 id="dev_page_title">Политика конфиденциальности Cherrygram</h1>
-        <br />
-        <p>Настоящая Политика конфиденциальности описывает, как мы, <strong>“Cherrygram”</strong>, используем и защищаем ваши персональные данные, которые вы предоставляете нам или которые иным образом получены или сгенерированы нами в связи с использованием вами облачных сервисов обмена сообщениями (<strong>“Сервисы”</strong>). В настоящей Политике конфиденциальности <strong>“мы”</strong>, <strong>“нас”</strong> и <strong>“наш”</strong> относится к Cherrygram, а <strong>“вы”</strong> — к пользователю Сервисов.</p>
+    <section class="card">
+      <h2><span class="num">1</span>Кто мы</h2>
+      <p>Cherrygram — бесплатное некоммерческое приложение, которое разрабатывается независимо и на добровольной основе. Оно <strong>не связано с Telegram, не одобрено и не управляется им</strong>. В этой политике «мы» и «разработчик» — это разработчик Cherrygram, а «вы» — пользователь приложения.</p>
+    </section>
 
-        <h3>Какие персональные данные мы используем</h3>
-        <h4>1. Данные аккаунта</h4>
-        <p>Cherrygram — это приложение для общения на основе Telegram API. Вы предоставляете свой номер телефона и базовые данные аккаунта (включая имя, фото профиля и информацию «о себе») для создания аккаунта в Telegram. <span class="highlight">Мы не собираем, не храним и не используем эту информацию.</span></p>
+    <section class="card">
+      <h2><span class="num">2</span>Ваш аккаунт Telegram и сообщения</h2>
+      <p>Cherrygram работает через официальный Telegram API. Номер телефона, профиль, сообщения, медиа, звонки, контакты, почта для двухэтапной проверки и все остальные данные аккаунта передаются <strong>напрямую между приложением на вашем устройстве и серверами Telegram</strong>.</p>
+      <p>Разработчик Cherrygram <span class="accent">не собирает, не получает, не хранит и не имеет доступа</span> к этим данным и не знает, с кем вы общаетесь и что отправляете.</p>
+      <p>Обработка ваших данных со стороны Telegram регулируется <a href="https://telegram.org/privacy" target="_blank" rel="noopener">Политикой конфиденциальности Telegram</a> и <a href="https://telegram.org/tos" target="_blank" rel="noopener">Условиями использования Telegram</a>, которые действуют и при использовании Cherrygram.</p>
+      <h3>Секретные чаты</h3>
+      <p>Секретные чаты используют сквозное шифрование Telegram. Их содержимое можно прочитать только на устройствах участников.</p>
+    </section>
 
-        <h4>2. Электронная почта</h4>
-        <p>При включении двухэтапной проверки или хранении документов через Telegram Passport вы можете указать email для восстановления доступа. Мы не собираем, не храним и не используем эти данные.</p>
+    <section class="card">
+      <h2><span class="num">3</span>Данные на вашем устройстве</h2>
+      <p>Cherrygram хранит часть данных локально, например:</p>
+      <ul>
+        <li>настройки приложения и экспортированные вами резервные копии настроек;</li>
+        <li>кэш медиа и другие временные файлы.</li>
+      </ul>
+      <p>Эти данные <strong>не покидают устройство</strong> через Cherrygram и не передаются разработчику. Они удаляются при очистке данных приложения или его удалении. Экспортированные файлы резервных копий находятся полностью под вашим контролем.</p>
+    </section>
 
-        <h4>3. Сообщения</h4>
-        <h5>3.1. Облачные чаты</h5>
-        <p>Cherrygram работает на базе облачных сервисов Telegram. Сообщения, фото, видео и документы из ваших <em>облачных чатов</em> хранятся на серверах Telegram, чтобы вы могли получить доступ к данным с любого устройства в любое время без использования сторонних резервных копий. Все данные сильно шифруются. Мы не собираем, не храним и не используем эту информацию, и не знаем, кто и когда отправлял сообщения через облачные чаты.</p>
+    <section class="card">
+      <h2><span class="num">4</span>Разрешения</h2>
+      <p>Cherrygram запрашивает разрешения (контакты, геолокация, камера, микрофон, уведомления и т. д.) только тогда, когда они нужны конкретной функции. Контакты и геолокация, которыми вы делитесь, передаются в Telegram, а не разработчику. Разрешения можно отозвать в любой момент в настройках Android, а синхронизацию контактов — отключить в разделе <em>Настройки → Конфиденциальность → Управление данными</em>.</p>
+    </section>
 
-        <h5>3.2. Секретные чаты</h5>
-        <p><em>Секретные чаты</em> используют сквозное шифрование. Все данные зашифрованы ключом, известным только вам и получателю. <strong>Никто, включая нас, не может узнать содержимое этих сообщений.</strong> Мы не храним секретные чаты на серверах и не используем эту информацию.</p>
+    <section class="card">
+      <h2><span class="num">5</span>Служебные запросы</h2>
+      <p>Для работы приложения Cherrygram может загружать служебные файлы (например, информацию об обновлениях или конфигурацию) с ресурсов, которые поддерживает разработчик, — например, с публичного хостинга кода. Эти запросы <strong>не содержат данных вашего аккаунта</strong>, а все проверки на их основе выполняются на устройстве. Как и при любом обращении в интернет, хостинг-провайдер видит ваш IP-адрес.</p>
+      <p>Разработчик также может отправить приложению служебную команду — например, чтобы оно сразу обновило конфигурацию. Такие команды обрабатываются на устройстве, только запускают описанные выше служебные запросы и не дают никому доступа к вашему аккаунту или данным.</p>
+    </section>
 
-        <h5>3.3. Медиа в секретных чатах</h5>
-        <p>При отправке фото, видео или файлов в секретных чатах, перед загрузкой на серверы Telegram, каждый элемент шифруется отдельным ключом, неизвестным серверу. Этот ключ и местоположение файла затем шифруются снова секретным ключом чата и отправляются получателю. Получатель может скачать и расшифровать файл. Файл технически находится на сервере Telegram, но выглядит как случайный набор данных для всех, кроме вас и получателя. Мы периодически удаляем эти данные с серверов для экономии диска. Мы не собираем, не храним и не используем эту информацию.</p>
+    <section class="card">
+      <h2><span class="num">6</span>Реклама (AdsGram)</h2>
+      <p>В Cherrygram может показываться реклама сервиса <a href="https://adsgram.ai" target="_blank" rel="noopener">AdsGram</a>. Для подбора и показа объявлений AdsGram получает:</p>
+      <dl class="data">
+        <dt>Аккаунт Telegram</dt><dd>Telegram ID, язык приложения и статус Telegram Premium</dd>
+        <dt>Сеть</dt><dd>IP-адрес — для показа рекламы, актуальной для вашей страны или города</dd>
+        <dt>Устройство</dt><dd>Модель устройства и версия Android</dd>
+        <dt>Экран</dt><dd>Размер области просмотра в пикселях и текущая яркость</dd>
+        <dt>Батарея</dt><dd>Уровень заряда и статус зарядки</dd>
+      </dl>
+      <p>AdsGram использует эти данные для таргетинга, защиты от ботов и корректного отображения баннеров. IP-адрес попадает на серверы AdsGram напрямую с вашего устройства при каждой загрузке рекламы. Разработчик эти данные не получает и не хранит. На обработку данных со стороны AdsGram распространяются его собственные правила.</p>
+    </section>
 
-        <h5>3.4. Публичные чаты</h5>
-        <p>Cherrygram поддерживает публичные каналы и группы. Все публичные чаты — облачные. Данные шифруются при хранении и передаче, но всё, что вы публикуете в публичных сообществах, доступно всем. Мы не собираем, не храним и не используем эту информацию.</p>
+    <section class="card">
+      <h2><span class="num">7</span>Сторонние сервисы и донаты</h2>
+      <p>В приложении могут быть ссылки на сторонние сервисы — например, для покупки Telegram Stars или Telegram Premium, а также для поддержки проекта. Эти сервисы работают независимо, разработчик их не контролирует и не рекомендует.</p>
+      <ul>
+        <li>Любые операции с ними вы совершаете <span class="accent">на свой страх и риск</span> и по их правилам.</li>
+        <li>Вопросы по таким покупкам следует направлять соответствующему сервису.</li>
+        <li>Донаты в поддержку Cherrygram регулируются отдельными <a href="donation-terms.html">Условиями поддержки</a>.</li>
+      </ul>
+    </section>
 
-        <h4>4. Номер телефона и контакты</h4>
-        <p>Cherrygram использует номер телефона как уникальный идентификатор, чтобы вы могли легко переходить с SMS и других мессенджеров и сохранять социальный граф. Мы запрашиваем разрешение перед синхронизацией контактов. Telegram хранит актуальные контакты, чтобы уведомлять вас, когда кто-то из ваших контактов регистрируется в Cherrygram, и правильно отображать имена в уведомлениях. Мы не храним эти данные. Вы всегда можете остановить синхронизацию или удалить контакты через Настройки &gt; Конфиденциальность и безопасность &gt; Настройки данных.</p>
+    <section class="card">
+      <h2><span class="num">8</span>Использование Cherrygram</h2>
+      <p>Cherrygram предоставляется бесплатно, <strong>«как есть»</strong> и «по мере доступности», без каких-либо гарантий. Функции могут меняться, переставать работать или удаляться, в том числе из-за изменений на стороне Telegram.</p>
+      <p>Разработчик оставляет за собой право <span class="accent">по своему усмотрению и без объяснения причин</span> ограничить или прекратить доступ любого пользователя к Cherrygram или к отдельным его функциям.</p>
+      <p>Это касается только Cherrygram. <strong>Ваш аккаунт Telegram и данные не затрагиваются</strong> — вы можете продолжать пользоваться Telegram через официальные приложения или другие клиенты.</p>
+      <p>В пределах, допускаемых законом, разработчик не несёт ответственности за убытки, возникшие в результате использования приложения или невозможности его использовать.</p>
+    </section>
 
-        <h4>5. Геолокация</h4>
-        <p>Если вы делитесь локацией в чате, эти данные обрабатываются так же, как сообщения в облачных и секретных чатах. Если вы включаете «Показывать мое местоположение» в People Nearby, Cherrygram будет показывать вашу локацию выбранным пользователям даже при закрытом приложении, пока функция активна.</p>
+    <section class="card">
+      <h2><span class="num">9</span>Изменения политики</h2>
+      <p>Эта политика может обновляться. Дата вверху страницы показывает, когда она менялась в последний раз. Продолжая пользоваться Cherrygram после обновления, вы принимаете новую редакцию.</p>
+    </section>
 
-        <h3>Сторонние сервисы оплаты</h3>
-        <p>
-            В приложении могут быть доступны ссылки или кнопки для перехода в <span class="highlight">сторонние сервисы</span> покупки валюты или ресурсов (Telegram Stars, Telegram Premium). 
-            Обратите внимание:
-        </p>
-        <ul>
-            <li>Данные сервисы управляются независимыми лицами. Разработчик Cherrygram не контролирует их деятельность и не проверяет их надежность.</li>
-            <li>Любые транзакции совершаются <span class="highlight">на ваш страх и риск</span>. Мы не несем ответственности за сохранность ваших средств или действия этих сервисов.</li>
-            <li>Все претензии по работе сторонних сервисов должны направляться напрямую их владельцам, а не разработчику Cherrygram.</li>
-        </ul>
+    <section class="card">
+      <h2><span class="num">10</span>Связаться с нами</h2>
+      <p>Если у вас есть вопросы по этой политике, напишите нам:</p>
+      <div class="contact">
+        <a href="mailto:cherrygramofficial@gmail.com"><small>Email</small>cherrygramofficial@gmail.com</a>
+        <a href="https://t.me/CherrygramSupport" target="_blank" rel="noopener"><small>Telegram</small>Cherrygram Support</a>
+      </div>
+    </section>
+  </main>
 
-        <h3>Использование рекламы AdsGram</h3>
-        <p>
-            Для подбора и корректного отображения рекламных объявлений сервис <span class="highlight">https://adsgram.ai</span> получит доступ к следующим данным:
-        </p>
-        <ul>
-            <li><span class="highlight">Статус вашего Telegram аккаунта:</span> Ваш Telegram ID, язык приложения и статус подписки Telegram Premium.</li>
-            <li><span class="highlight">Сеть:</span> Ваш IP-адрес (используется для подбора рекламы под вашу страну/город).</li>
-            <li><span class="highlight">О вашем устройстве:</span> Модель и версия ОС Android.</li>
-            <li><span class="highlight">Экран и интерфейс:</span> Размеры области просмотра (ширина и высота в пикселях) и текущий уровень яркости экрана.</li>
-            <li><span class="highlight">Батарея:</span> Процент заряда аккумулятора и статус зарядки.</li>
-        </ul>
-        <p>Эти данные необходимы AdsGram API для таргетинга рекламы, проверки подлинности устройства (защиты от ботов) и правильной отрисовки баннеров.</p>
-
-        <h3>Согласие</h3>
-        <p>
-            Совершая донат или используя ссылки на сторонние сервисы оплаты, вы подтверждаете, что:
-        </p>
-        <ul>
-            <li>Понимаете <span class="highlight">безвозмездный характер</span> поддержки и <span class="highlight">отказываетесь от любых претензий по возврату средств</span> или требованию стабильной работы бонусного функционала.</li>
-            <li>Понимаете все риски, и <span class="highlight">отказываетесь от любых финансовых и юридических претензий</span> к разработчику Cherrygram.</li>
-        </ul>
-
-        <div class="contact-section">
-            <h3>Связаться с нами</h3>
-            <p>Если у вас есть вопросы о настоящей Политике конфиденциальности, вы можете связаться с нами:</p>
-            <p>1. Email: <a href="mailto:cherrygramofficial@gmail.com">cherrygramofficial@gmail.com</a></p>
-            <p>2. Telegram: <a href="https://t.me/CherrygramSupport">Cherrygram Support</a></p>
-        </div>
-
-        <hr>
-        <p class="footer-note text-center">Последнее обновление: Июль 2026</p>
-    </div>
-
+  <footer>© Cherrygram</footer>
 </div>
 
-<script type="text/javascript" src="js/scrolltopcontrol.js"></script>
-
+<script>
+(function () {
+  var TITLES = { en: 'Cherrygram Privacy Policy', ru: 'Политика конфиденциальности Cherrygram' };
+  function pick() {
+    var q = new URLSearchParams(location.search).get('lang');
+    if (q === 'en' || q === 'ru') return q;
+    try { var s = localStorage.getItem('cg_lang'); if (s === 'en' || s === 'ru') return s; } catch (e) {}
+    var n = (navigator.languages && navigator.languages[0]) || navigator.language || 'en';
+    return /^(ru|uk|be|kk|uz)/i.test(n) ? 'ru' : 'en';
+  }
+  function apply(lang, save) {
+    document.body.classList.toggle('ru', lang === 'ru');
+    document.documentElement.lang = lang;
+    document.title = TITLES[lang];
+    document.querySelectorAll('.lang button').forEach(function (b) {
+      b.setAttribute('aria-pressed', String(b.dataset.set === lang));
+    });
+    if (save) { try { localStorage.setItem('cg_lang', lang); } catch (e) {} }
+  }
+  document.querySelectorAll('.lang button').forEach(function (b) {
+    b.addEventListener('click', function () { apply(b.dataset.set, true); });
+  });
+  apply(pick(), false);
+})();
+</script>
 </body>
 </html>
