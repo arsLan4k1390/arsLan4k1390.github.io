@@ -9,6 +9,15 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+(function () {
+  var p = 'system';
+  try { var s = localStorage.getItem('cg_theme'); if (s === 'light' || s === 'dark') p = s; } catch (e) {}
+  var d = document.documentElement;
+  d.setAttribute('data-theme-pref', p);
+  if (p !== 'system') d.setAttribute('data-theme', p);
+})();
+</script>
 <style>
   @font-face {
     font-family: 'Gilroy CG';
@@ -27,8 +36,10 @@
     --line: #ebe6e8;
     --shadow: 0 1px 2px rgba(31, 26, 28, 0.04), 0 8px 24px rgba(31, 26, 28, 0.06);
   }
+  :root { color-scheme: light; }
   @media (prefers-color-scheme: dark) {
-    :root {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
       --cherry: #e0789a;
       --cherry-soft: rgba(224, 120, 154, 0.10);
       --cherry-line: rgba(224, 120, 154, 0.28);
@@ -39,6 +50,18 @@
       --line: #2e282b;
       --shadow: none;
     }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --cherry: #e0789a;
+    --cherry-soft: rgba(224, 120, 154, 0.10);
+    --cherry-line: rgba(224, 120, 154, 0.28);
+    --bg: #141112;
+    --card: #1e1a1c;
+    --text: #f1ecee;
+    --muted: #a89ea2;
+    --line: #2e282b;
+    --shadow: none;
   }
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -53,6 +76,10 @@
   .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
   .brand { display: flex; align-items: center; gap: 10px; font-family: 'Gilroy CG', 'Inter', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: -0.005em; }
   .brand-logo { width: 32px; height: 32px; flex: none; display: block; }
+  @media (min-width: 720px) {
+    .brand { font-size: 23px; gap: 12px; }
+    .brand-logo { width: 40px; height: 40px; }
+  }
 
   .lang { display: inline-flex; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
   .lang button {
@@ -117,6 +144,43 @@
   body.ru [data-l="en"] { display: none; }
   body.ru [data-l="ru"] { display: block; }
   body.ru span[data-l="ru"] { display: inline; }
+
+  html { scrollbar-gutter: stable; }
+  .controls { display: flex; align-items: center; gap: 8px; }
+  .theme-wrap { position: relative; }
+  .theme {
+    width: 38px; height: 38px; flex: none; display: grid; place-items: center; cursor: pointer; padding: 0;
+    background: var(--card); border: 1px solid var(--line); border-radius: 999px; color: var(--muted);
+  }
+  .theme:hover, .theme[aria-expanded="true"] { color: var(--cherry); border-color: var(--cherry-line); }
+  .theme svg, .theme-menu svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .theme svg .fill, .theme-menu svg .fill { fill: currentColor; stroke: none; }
+  .theme .ic { display: none; }
+  html[data-theme-pref="system"] .theme .ic-system,
+  html[data-theme-pref="light"] .theme .ic-light,
+  html[data-theme-pref="dark"] .theme .ic-dark { display: grid; }
+  .theme-menu {
+    position: absolute; top: calc(100% + 8px); right: 0; z-index: 10; min-width: 196px; padding: 6px; margin: 0; list-style: none;
+    background: var(--card); border: 1px solid var(--line); border-radius: 14px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.14), 0 2px 6px rgba(0, 0, 0, 0.06);
+    opacity: 0; transform: translateY(-4px) scale(0.98); transform-origin: top right; pointer-events: none;
+    transition: opacity .14s ease, transform .14s ease;
+  }
+  .theme-menu.open { opacity: 1; transform: none; pointer-events: auto; }
+  @media (max-width: 420px) { .theme-menu { right: auto; left: 50%; transform: translate(-50%, -4px) scale(0.98); transform-origin: top center; } .theme-menu.open { transform: translate(-50%, 0); } }
+  .theme-menu button {
+    width: 100%; display: grid; grid-template-columns: 18px 1fr 16px; align-items: center; gap: 10px; text-align: left;
+    background: transparent; border: 0; border-radius: 9px; padding: 9px 10px; cursor: pointer;
+    font: inherit; font-size: 14px; font-weight: 500; color: var(--text);
+  }
+  .theme-menu button:hover, .theme-menu button:focus-visible { background: var(--cherry-soft); outline: none; }
+  .theme-menu button .chk { opacity: 0; color: var(--cherry); }
+  .theme-menu button[aria-checked="true"] { color: var(--cherry); font-weight: 600; }
+  .theme-menu button[aria-checked="true"] .chk { opacity: 1; }
+  .theme-menu svg.chk { width: 16px; height: 16px; stroke-width: 2.6; }
+  @media (prefers-reduced-motion: reduce) { .theme-menu { transition: none; } }
+  .lang .ls { display: none; }
+  @media (max-width: 420px) { .lang .lf { display: none; } .lang .ls { display: inline; } .lang button { padding: 6px 12px; } }
 </style>
 </head>
 <body>
@@ -127,9 +191,23 @@
       <svg class="brand-logo" aria-hidden="true" width="32" height="32" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect x="10" y="10" width="620" height="620" rx="310" fill="url(#cgLogoGrad)"/> <rect x="10" y="10" width="620" height="620" rx="310" stroke="white" stroke-width="20"/> <path d="M383.323 127.493C386.815 134.41 384.44 142.785 377.801 146.963C373.574 149.623 369.834 152.233 366.529 154.789C405.644 156.688 451.546 172.465 475.197 246.991C393.397 254.55 361.271 217.003 344.844 181.58C343.745 184.75 343.19 187.771 343.002 190.632C342.13 203.923 348.677 218.798 360.499 236.478C365.873 244.516 371.896 252.518 378.143 260.817L379.523 262.651C386.133 271.438 392.978 280.61 398.766 289.741C402.809 296.118 406.721 303.047 409.709 310.361C450.216 318.1 480.781 352.949 480.781 394.77C480.781 442.272 441.345 480.781 392.697 480.781C344.049 480.781 304.613 442.272 304.613 394.77C304.613 353.111 334.942 318.37 375.215 310.452C374.326 308.925 373.365 307.348 372.333 305.719C367.287 297.76 361.155 289.512 354.468 280.622L352.991 278.661C346.854 270.51 340.335 261.85 334.467 253.074C322.838 235.682 311.869 215.189 311.837 193.102C301.707 204.276 292.418 216.728 284.179 229.828C266.513 257.916 254.87 287.06 250.081 309.663C266.62 312.019 281.668 318.863 293.887 328.889C294.088 329.054 294.127 329.346 293.979 329.56C281.067 348.161 273.524 370.605 273.524 394.77C273.524 418.934 281.067 441.378 293.979 459.979C294.127 460.193 294.088 460.485 293.887 460.65C278.575 473.214 258.819 480.781 237.254 480.781C188.607 480.781 149.17 442.272 149.17 394.77C149.17 353.631 178.747 319.238 218.27 310.761C223.03 282.071 237.237 246.456 257.688 213.941C282.73 174.126 319.229 135.606 364.144 119.913C371.58 117.315 379.83 120.575 383.323 127.493Z" fill="white"/> <defs> <linearGradient id="cgLogoGrad" x1="640" y1="0" x2="0" y2="640" gradientUnits="userSpaceOnUse"> <stop offset="0.09375" stop-color="#E64C7F"/> <stop offset="0.447917" stop-color="#872847"/> <stop offset="0.833333" stop-color="#3F0D1B"/> </linearGradient> </defs> </svg>
       Cherrygram
     </div>
-    <div class="lang" role="group" aria-label="Language">
-      <button type="button" data-set="en" aria-pressed="true">English</button>
-      <button type="button" data-set="ru" aria-pressed="false">Русский</button>
+    <div class="controls">
+      <div class="theme-wrap">
+        <button type="button" class="theme" id="themeBtn" aria-haspopup="menu" aria-expanded="false" aria-controls="themeMenu">
+          <span class="ic ic-system"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" class="fill"/></svg></span>
+          <span class="ic ic-light"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></span>
+          <span class="ic ic-dark"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></span>
+        </button>
+        <ul class="theme-menu" id="themeMenu" role="menu">
+          <li><button type="button" role="menuitemradio" data-theme-set="system" aria-checked="false"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 0 1 0 18z" class="fill"/></svg><span><span data-l="en">System</span><span data-l="ru">Как в системе</span></span><svg class="chk" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></button></li>
+          <li><button type="button" role="menuitemradio" data-theme-set="light" aria-checked="false"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span><span data-l="en">Light</span><span data-l="ru">Светлая</span></span><svg class="chk" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></button></li>
+          <li><button type="button" role="menuitemradio" data-theme-set="dark" aria-checked="false"><svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg><span><span data-l="en">Dark</span><span data-l="ru">Тёмная</span></span><svg class="chk" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></button></li>
+        </ul>
+      </div>
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-set="en" aria-pressed="true"><span class="lf">English</span><span class="ls">EN</span></button>
+        <button type="button" data-set="ru" aria-pressed="false"><span class="lf">Русский</span><span class="ls">RU</span></button>
+      </div>
     </div>
   </div>
 
@@ -357,6 +435,55 @@
     b.addEventListener('click', function () { apply(b.dataset.set, true); });
   });
   apply(pick(), false);
+})();
+</script>
+<script>
+(function () {
+  var LABEL = { en: 'Theme', ru: 'Тема' };
+  var d = document.documentElement;
+  var btn = document.getElementById('themeBtn');
+  var menu = document.getElementById('themeMenu');
+  var items = Array.prototype.slice.call(menu.querySelectorAll('[data-theme-set]'));
+
+  function sync() {
+    var p = d.getAttribute('data-theme-pref');
+    items.forEach(function (b) { b.setAttribute('aria-checked', String(b.dataset.themeSet === p)); });
+    var l = d.lang === 'ru' ? 'ru' : 'en';
+    btn.setAttribute('aria-label', LABEL[l]); btn.title = LABEL[l];
+  }
+  function setTheme(p) {
+    d.setAttribute('data-theme-pref', p);
+    if (p === 'system') d.removeAttribute('data-theme'); else d.setAttribute('data-theme', p);
+    try { if (p === 'system') localStorage.removeItem('cg_theme'); else localStorage.setItem('cg_theme', p); } catch (e) {}
+    sync();
+  }
+  function open() {
+    menu.classList.add('open'); btn.setAttribute('aria-expanded', 'true');
+    var cur = menu.querySelector('[aria-checked="true"]') || items[0];
+    cur.focus({ preventScroll: true });
+  }
+  function close(focusBtn) {
+    if (!menu.classList.contains('open')) return;
+    menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false');
+    if (focusBtn) btn.focus({ preventScroll: true });
+  }
+  btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    menu.classList.contains('open') ? close(false) : open();
+  });
+  items.forEach(function (b) {
+    b.addEventListener('click', function () { setTheme(b.dataset.themeSet); close(true); });
+  });
+  menu.addEventListener('keydown', function (e) {
+    var i = items.indexOf(document.activeElement);
+    if (e.key === 'ArrowDown') { e.preventDefault(); items[(i + 1) % items.length].focus(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); items[(i + items.length - 1) % items.length].focus(); }
+    else if (e.key === 'Tab') { close(false); }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(true); });
+  document.addEventListener('click', function (e) { if (!menu.contains(e.target)) close(false); });
+  new MutationObserver(sync).observe(d, { attributes: true, attributeFilter: ['lang'] });
+  sync();
 })();
 </script>
 </body>
