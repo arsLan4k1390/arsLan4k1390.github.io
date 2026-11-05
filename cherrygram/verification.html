@@ -1,68 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Verification Codes</title>
+<meta name="color-scheme" content="light dark">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20width%3D%22640%22%20height%3D%22640%22%20viewBox%3D%220%200%20640%20640%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%20%3Crect%20x%3D%2210%22%20y%3D%2210%22%20width%3D%22620%22%20height%3D%22620%22%20rx%3D%22310%22%20fill%3D%22url%28%23paint0_linear_491_23%29%22/%3E%20%3Crect%20x%3D%2210%22%20y%3D%2210%22%20width%3D%22620%22%20height%3D%22620%22%20rx%3D%22310%22%20stroke%3D%22white%22%20stroke-width%3D%2220%22/%3E%20%3Cpath%20d%3D%22M383.323%20127.493C386.815%20134.41%20384.44%20142.785%20377.801%20146.963C373.574%20149.623%20369.834%20152.233%20366.529%20154.789C405.644%20156.688%20451.546%20172.465%20475.197%20246.991C393.397%20254.55%20361.271%20217.003%20344.844%20181.58C343.745%20184.75%20343.19%20187.771%20343.002%20190.632C342.13%20203.923%20348.677%20218.798%20360.499%20236.478C365.873%20244.516%20371.896%20252.518%20378.143%20260.817L379.523%20262.651C386.133%20271.438%20392.978%20280.61%20398.766%20289.741C402.809%20296.118%20406.721%20303.047%20409.709%20310.361C450.216%20318.1%20480.781%20352.949%20480.781%20394.77C480.781%20442.272%20441.345%20480.781%20392.697%20480.781C344.049%20480.781%20304.613%20442.272%20304.613%20394.77C304.613%20353.111%20334.942%20318.37%20375.215%20310.452C374.326%20308.925%20373.365%20307.348%20372.333%20305.719C367.287%20297.76%20361.155%20289.512%20354.468%20280.622L352.991%20278.661C346.854%20270.51%20340.335%20261.85%20334.467%20253.074C322.838%20235.682%20311.869%20215.189%20311.837%20193.102C301.707%20204.276%20292.418%20216.728%20284.179%20229.828C266.513%20257.916%20254.87%20287.06%20250.081%20309.663C266.62%20312.019%20281.668%20318.863%20293.887%20328.889C294.088%20329.054%20294.127%20329.346%20293.979%20329.56C281.067%20348.161%20273.524%20370.605%20273.524%20394.77C273.524%20418.934%20281.067%20441.378%20293.979%20459.979C294.127%20460.193%20294.088%20460.485%20293.887%20460.65C278.575%20473.214%20258.819%20480.781%20237.254%20480.781C188.607%20480.781%20149.17%20442.272%20149.17%20394.77C149.17%20353.631%20178.747%20319.238%20218.27%20310.761C223.03%20282.071%20237.237%20246.456%20257.688%20213.941C282.73%20174.126%20319.229%20135.606%20364.144%20119.913C371.58%20117.315%20379.83%20120.575%20383.323%20127.493Z%22%20fill%3D%22white%22/%3E%20%3Cdefs%3E%20%3ClinearGradient%20id%3D%22paint0_linear_491_23%22%20x1%3D%22640%22%20y1%3D%220%22%20x2%3D%220%22%20y2%3D%22640%22%20gradientUnits%3D%22userSpaceOnUse%22%3E%20%3Cstop%20offset%3D%220.09375%22%20stop-color%3D%22%23E64C7F%22/%3E%20%3Cstop%20offset%3D%220.447917%22%20stop-color%3D%22%23872847%22/%3E%20%3Cstop%20offset%3D%220.833333%22%20stop-color%3D%22%233F0D1B%22/%3E%20%3C/linearGradient%3E%20%3C/defs%3E%20%3C/svg%3E">
+<title>Cherrygram Verification Codes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --bg: #f5f6f8; --card: #fff; --text: #1d1f23; --muted: #6b7280;
-  --border: #e3e5e9; --head: #f0f1f4; --accent: #2563eb; --error: #b00020;
-}
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #14161a; --card: #1d2026; --text: #e8eaed; --muted: #9aa0a9;
-    --border: #2d3139; --head: #252932; --accent: #6ea0ff; --error: #ff6b81;
+  @font-face {
+    font-family: 'Gilroy CG';
+    font-weight: 800;
+    font-display: swap;
+    src: url(data:font/woff2;base64,d09GMgABAAAAAAQwAA4AAAAACBQAAAPbAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAGhYbgiQcMAZgAGQRCAqEVINqATYCJAMkCxQABCAFg0YHIBujBlFUUF4B/CywG1+KABFLQlOEwwPIsCi3WhhRjPEvF/wJtYNnRA/70WbfiUoVhyzmoRPptEukTKpUopj8A7ty9vDBWxvpQD9xgAJhA6BMJVTQy0UbEf/svP+KMQt8Em6EQ0t14/ofwBfs4DH1UZqe84NGoWZTVOEpEvRkt58q/B6l5/MB2xvErtsw748YAT6d9nh/UdALKBGdIui2SgU/VIZWKFvZWADKHmsiBGUI0DQVolYkHoGC2xkLQRkQEFHaTUIQnWITUZtuhdLtGJxZBCxbDdFO89afgIgodqaqgW3TesYtyhkEXOND1A7NH28zxOZ7oPlUN1lFbonSydzeIRIvLVr3gGwlRZs22X9iJMEb0A3zANCSQ3gUUWf2qhPAae6YC2i1EdDF8MfBXp0dJpCQyzb0cMzjdwoQyFcvsAiPQgtG4QWjCC4Ag4rgcZiVk0dQTPaIotyncTddc9VF55woSJOzXwRdYBjowSN8AbQCp6aOTUmt6l9c2lYlUy3m5VsPj+wZzT0y3Nb6bGTp4aGdw37LUXLb0JA7F7cU+d6dAd2lbxoDDLtGSNHxyMUkgIzIrsow7Kyy5YqgQrETMbV3vL39vxBkiFFtCn86CbcUv+ur4rsTJ+bC+3QY8qr+DQlwQXWb0Z7ro7nwaQggOo07t3NoqB058o3cndt1KP/q1++sV9er/dfbN+kOmT1tG5l9oeiLpu9jdkiHfqMObA03f2N/MLJh0H7kwsxFbx80PFb4pNKIUJcLL15WK/uFq9IKrevkduxcLHoWSwZPYlG0xxkeLTe1dsDd36cnUxczoYfyzA5tg4X5nEGiS/q9R8/+JL233015SvHJxR4S8qNATyy+oJWO1W8sWL1SSi/GXmD/P3Ol3R3pp2OrV+tXrNq1sUZn/YORjvR1bJBuksLnS7OtNPojTz9LsYDtCaJfbjzS83Rd8qDTSzi6m8j/9ORuiAogCHvnDy4dKBT8nbktLwGPn1be6aP+S/9/bnXgh0gsVir1LRtx0fpmYJo1AIRp11Vf3c03DQmrRjGnVwO7tQG7YjOnBAi6nLQUFDIAB8CoDrfgpXfhHvBBLIqA0u8haLHfNdBq0RBoc98fVTv2a+XCIrJivNw8ElAPLaKhoGJB2WShmlk5hAV5xaBaeYX4haWQoKQCAtC1VPGIwjmHOjeZ4uRAouYVEBOWhVLKSIixkgkLcGjm5JYUYBVDRUKxx/K10etgwl+HxabyclTtu2oe5xUWgn4pYtEC9fORbI+wBHuNLiVhEg6OPKUgKz+nsAQXkgAvGxoSJhIWBjY2JjzQPGibAQAAAA==) format('woff2');
   }
-}
-* { box-sizing: border-box; }
-body {
-  font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  margin: 0; padding: 32px 20px; background: var(--bg); color: var(--text);
-}
-.wrap { max-width: 960px; margin: 0 auto; }
-h1 { font-size: 22px; margin: 0 0 12px; }
-#info {
-  font-family: ui-monospace, "SF Mono", Consolas, monospace;
-  font-size: 13px; color: var(--muted); line-height: 1.7; margin-bottom: 16px;
-}
-#info b { color: var(--text); font-weight: 600; }
-#status { color: var(--error); }
-.table-wrap {
-  overflow-x: auto; background: var(--card);
-  border: 1px solid var(--border); border-radius: 12px;
-}
-table { border-collapse: collapse; width: 100%; }
-th, td { padding: 10px 14px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--border); }
-tr:last-child td { border-bottom: none; }
-th { background: var(--head); font-size: 12px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
-td.code {
-  font-family: ui-monospace, "SF Mono", Consolas, monospace;
-  font-size: 20px; font-weight: 700; letter-spacing: .12em; color: var(--accent); white-space: nowrap;
-}
-td.time { font-family: ui-monospace, "SF Mono", Consolas, monospace; font-size: 13px; white-space: nowrap; }
-td.time small { color: var(--muted); }
-pre { white-space: pre-wrap; word-wrap: break-word; margin: 0; font-size: 13px; color: var(--muted); font-family: inherit; }
-.empty { text-align: center; color: var(--muted); padding: 24px; }
+  :root {
+    --cherry: #872847;
+    --cherry-soft: rgba(135, 40, 71, 0.08);
+    --cherry-line: rgba(135, 40, 71, 0.22);
+    --bg: #f6f4f5;
+    --card: #ffffff;
+    --text: #1f1a1c;
+    --muted: #6b6266;
+    --line: #ebe6e8;
+    --shadow: 0 1px 2px rgba(31, 26, 28, 0.04), 0 8px 24px rgba(31, 26, 28, 0.06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --cherry: #e0789a;
+      --cherry-soft: rgba(224, 120, 154, 0.10);
+      --cherry-line: rgba(224, 120, 154, 0.28);
+      --bg: #141112;
+      --card: #1e1a1c;
+      --text: #f1ecee;
+      --muted: #a89ea2;
+      --line: #2e282b;
+      --shadow: none;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.65 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; padding: 32px 16px 56px; }
+
+  .top { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 28px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: 'Gilroy CG', 'Inter', sans-serif; font-weight: 800; font-size: 19px; letter-spacing: -0.005em; }
+  .brand-logo { width: 32px; height: 32px; flex: none; display: block; }
+
+  .lang { display: inline-flex; background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
+  .lang button {
+    border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 14px; font-weight: 600;
+    padding: 6px 14px; border-radius: 999px; cursor: pointer;
+  }
+  .lang button[aria-pressed="true"] { background: var(--cherry); color: #fff; }
+
+  header.hero { margin-bottom: 24px; }
+  h1 { font-size: clamp(28px, 6vw, 38px); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 10px; }
+  .updated { color: var(--muted); font-size: 14px; margin: 0; }
+  .lead { color: var(--muted); margin: 14px 0 0; }
+
+  .summary {
+    background: var(--cherry-soft); border: 1px solid var(--cherry-line); border-radius: 16px;
+    padding: 20px 22px; margin: 28px 0;
+  }
+  .summary h2 { font-size: 15px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--cherry); margin: 0 0 12px; }
+  .summary ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+  .summary li { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: start; }
+  .summary li svg { width: 18px; height: 18px; margin-top: 4px; stroke: var(--cherry); fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+  section.card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+    padding: 22px 22px 8px; margin-bottom: 14px;
+  }
+  section.card h2 { display: flex; align-items: baseline; gap: 12px; font-size: 19px; letter-spacing: -0.01em; margin: 0 0 10px; }
+  .num { color: var(--cherry); font-variant-numeric: tabular-nums; font-size: 15px; font-weight: 700; min-width: 22px; }
+  section.card p, section.card ul { margin: 0 0 14px; }
+  section.card ul { padding-left: 20px; }
+  section.card li { margin-bottom: 6px; }
+  h3 { font-size: 15px; margin: 16px 0 6px; }
+  strong { font-weight: 600; }
+  .accent { color: var(--cherry); font-weight: 600; }
+  a { color: var(--cherry); font-weight: 600; text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  .note {
+    border-left: 3px solid var(--cherry); background: var(--cherry-soft); border-radius: 0 10px 10px 0;
+    padding: 10px 14px; margin: 0 0 14px; font-size: 15px;
+  }
+  dl.data { display: grid; grid-template-columns: max-content 1fr; gap: 8px 16px; margin: 0 0 14px; }
+  dl.data dt { font-weight: 600; }
+  dl.data dd { margin: 0; color: var(--muted); }
+  @media (max-width: 520px) {
+    dl.data { grid-template-columns: 1fr; gap: 2px; }
+    dl.data dd { margin-bottom: 8px; }
+    section.card, .summary { padding-left: 18px; padding-right: 18px; }
+  }
+
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 4px 0 14px; }
+  .contact a {
+    display: block; border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; color: var(--text); font-weight: 500;
+  }
+  .contact a:hover { border-color: var(--cherry-line); text-decoration: none; background: var(--cherry-soft); }
+  .contact small { display: block; color: var(--muted); font-size: 13px; font-weight: 500; }
+  @media (max-width: 520px) { .contact { grid-template-columns: 1fr; } }
+
+  footer { color: var(--muted); font-size: 13px; text-align: center; margin-top: 28px; }
+
+
+  .status-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 22px; }
+  .pill {
+    display: inline-flex; align-items: center; gap: 8px; background: var(--card); border: 1px solid var(--line);
+    border-radius: 999px; padding: 6px 12px; font-size: 13px; color: var(--muted);
+  }
+  .pill b { color: var(--text); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .live { width: 8px; height: 8px; border-radius: 50%; background: #2fb36d; box-shadow: 0 0 0 0 rgba(47,179,109,.5); animation: pulse 2s infinite; }
+  .live.off { background: #d64545; animation: none; }
+  @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(47,179,109,.45); } 70% { box-shadow: 0 0 0 8px rgba(47,179,109,0); } 100% { box-shadow: 0 0 0 0 rgba(47,179,109,0); } }
+  @media (prefers-reduced-motion: reduce) { .live { animation: none; } }
+
+  .error {
+    display: none; border: 1px solid rgba(214,69,69,.35); background: rgba(214,69,69,.08); color: #c23b3b;
+    border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; font-size: 14px;
+  }
+  @media (prefers-color-scheme: dark) { .error { color: #ff8a8a; } }
+  .error.show { display: block; }
+
+  .codes { display: grid; gap: 12px; }
+  .code-card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow);
+    padding: 18px 20px; display: grid; grid-template-columns: 1fr auto; gap: 6px 16px; align-items: center;
+  }
+  .code-card.latest { border-color: var(--cherry-line); background: linear-gradient(0deg, var(--cherry-soft), var(--cherry-soft)), var(--card); }
+  .code-value {
+    font: 700 30px/1.1 ui-monospace, 'SF Mono', 'JetBrains Mono', Consolas, monospace; letter-spacing: .14em; color: var(--cherry);
+  }
+  .code-meta { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+  .badge { display: inline-block; background: var(--cherry); color: #fff; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; border-radius: 6px; padding: 2px 7px; margin-right: 8px; vertical-align: 1px; }
+  .copy {
+    grid-row: 1 / span 2; grid-column: 2; border: 1px solid var(--line); background: var(--card); color: var(--text);
+    font: inherit; font-size: 14px; font-weight: 600; border-radius: 10px; padding: 9px 14px; cursor: pointer; min-width: 92px;
+  }
+  .copy:hover { border-color: var(--cherry-line); background: var(--cherry-soft); }
+  .copy.done { color: var(--cherry); border-color: var(--cherry-line); }
+  details.msg { grid-column: 1 / -1; margin-top: 6px; }
+  details.msg summary { cursor: pointer; color: var(--muted); font-size: 13px; font-weight: 500; list-style: none; }
+  details.msg summary::-webkit-details-marker { display: none; }
+  details.msg summary::before { content: '▸ '; }
+  details.msg[open] summary::before { content: '▾ '; }
+  details.msg pre {
+    margin: 8px 0 0; white-space: pre-wrap; word-wrap: break-word; font: 13px/1.55 inherit; font-family: inherit;
+    color: var(--muted); background: var(--bg); border-radius: 10px; padding: 10px 12px;
+  }
+  .empty {
+    text-align: center; color: var(--muted); background: var(--card); border: 1px dashed var(--line);
+    border-radius: 16px; padding: 36px 16px;
+  }
+  .hint { color: var(--muted); font-size: 14px; margin: 22px 0 0; text-align: center; }
+  @media (max-width: 520px) {
+    .code-value { font-size: 26px; }
+    .code-card { padding: 16px; }
+  }
 </style>
 </head>
 <body>
 <div class="wrap">
-<h1>Verification Codes</h1>
-<div id="info">
-Refresh interval: <b>15 seconds</b><br>
-Last refreshed: <b id="lastRef">—</b><br>
-<span id="status"></span>
-</div>
 
-<div class="table-wrap">
-<table id="codes">
-<thead>
-<tr><th>Code</th><th>Time</th><th>Service message</th></tr>
-</thead>
-<tbody></tbody>
-</table>
-</div>
+  <div class="top">
+    <div class="brand">
+      <svg class="brand-logo" aria-hidden="true" width="32" height="32" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect x="10" y="10" width="620" height="620" rx="310" fill="url(#cgLogoGrad)"/> <rect x="10" y="10" width="620" height="620" rx="310" stroke="white" stroke-width="20"/> <path d="M383.323 127.493C386.815 134.41 384.44 142.785 377.801 146.963C373.574 149.623 369.834 152.233 366.529 154.789C405.644 156.688 451.546 172.465 475.197 246.991C393.397 254.55 361.271 217.003 344.844 181.58C343.745 184.75 343.19 187.771 343.002 190.632C342.13 203.923 348.677 218.798 360.499 236.478C365.873 244.516 371.896 252.518 378.143 260.817L379.523 262.651C386.133 271.438 392.978 280.61 398.766 289.741C402.809 296.118 406.721 303.047 409.709 310.361C450.216 318.1 480.781 352.949 480.781 394.77C480.781 442.272 441.345 480.781 392.697 480.781C344.049 480.781 304.613 442.272 304.613 394.77C304.613 353.111 334.942 318.37 375.215 310.452C374.326 308.925 373.365 307.348 372.333 305.719C367.287 297.76 361.155 289.512 354.468 280.622L352.991 278.661C346.854 270.51 340.335 261.85 334.467 253.074C322.838 235.682 311.869 215.189 311.837 193.102C301.707 204.276 292.418 216.728 284.179 229.828C266.513 257.916 254.87 287.06 250.081 309.663C266.62 312.019 281.668 318.863 293.887 328.889C294.088 329.054 294.127 329.346 293.979 329.56C281.067 348.161 273.524 370.605 273.524 394.77C273.524 418.934 281.067 441.378 293.979 459.979C294.127 460.193 294.088 460.485 293.887 460.65C278.575 473.214 258.819 480.781 237.254 480.781C188.607 480.781 149.17 442.272 149.17 394.77C149.17 353.631 178.747 319.238 218.27 310.761C223.03 282.071 237.237 246.456 257.688 213.941C282.73 174.126 319.229 135.606 364.144 119.913C371.58 117.315 379.83 120.575 383.323 127.493Z" fill="white"/> <defs> <linearGradient id="cgLogoGrad" x1="640" y1="0" x2="0" y2="640" gradientUnits="userSpaceOnUse"> <stop offset="0.09375" stop-color="#E64C7F"/> <stop offset="0.447917" stop-color="#872847"/> <stop offset="0.833333" stop-color="#3F0D1B"/> </linearGradient> </defs> </svg>
+      Cherrygram
+    </div>
+  </div>
+
+  <header class="hero">
+    <h1>Verification codes</h1>
+    <p class="lead">Login codes for the Cherrygram test account. The newest code is shown first and the list refreshes automatically.</p>
+  </header>
+
+  <div class="status-row">
+    <span class="pill"><span class="live" id="live"></span><span id="liveText">Connecting…</span></span>
+    <span class="pill">Refresh every <b>15 s</b></span>
+    <span class="pill">Last refreshed <b id="lastRef">—</b></span>
+  </div>
+
+  <div class="error" id="status" role="alert"></div>
+
+  <div class="codes" id="codes">
+    <div class="empty">Loading…</div>
+  </div>
+
+  <p class="hint">All times are in UTC.</p>
+
+  <footer>© Cherrygram</footer>
 </div>
 
 <script>
@@ -70,60 +207,115 @@ Last refreshed: <b id="lastRef">—</b><br>
 const DEPLOY_ID = "AKfycbxNZs6l4aMHsJA8BbwoYIE9XoC60y_kpp5Xsib80f2m0-xHtB-DCOXMeJDNaZvzguuD"; // update here: https://script.google.com
 // Должен совпадать со значением SECRET_TOKEN в Script Properties
 const TOKEN = "5NfkUTRAamkW0VI7zKE1S1giTnfU8u7n";
+const REFRESH_MS = 15000;
 
 const API_URL = `https://script.google.com/macros/s/${DEPLOY_ID}/exec`;
-const tbody = document.querySelector("#codes tbody");
+const list = document.getElementById("codes");
 const lastRef = document.getElementById("lastRef");
 const statusEl = document.getElementById("status");
+const live = document.getElementById("live");
+const liveText = document.getElementById("liveText");
+let entries = [];
 
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }
 
+const pad = n => n.toString().padStart(2, '0');
+
 // 31.10.2026, 14:05:09
-function formatDateUTC(isoString) {
-  const d = new Date(isoString);
-  const pad = n => n.toString().padStart(2, '0');
+function formatDateUTC(input) {
+  const d = new Date(input);
   return `${pad(d.getUTCDate())}.${pad(d.getUTCMonth() + 1)}.${d.getUTCFullYear()}, ` +
          `${pad(d.getUTCHours())}:${pad(d.getUTCMinutes())}:${pad(d.getUTCSeconds())}`;
 }
 
-function showData(data) {
-  if (data.error) {
-    statusEl.textContent = "Error: " + data.error;
-    return;
-  }
-  statusEl.textContent = "";
-  lastRef.textContent = formatDateUTC(new Date().toISOString()) + " UTC";
-
-  const sorted = (data.entries || []).sort((a, b) => new Date(b.timeUtc) - new Date(a.timeUtc));
-  if (!sorted.length) {
-    tbody.innerHTML = `<tr><td colspan="3" class="empty">No codes yet</td></tr>`;
-    return;
-  }
-  tbody.innerHTML = sorted.map(e => `
-    <tr>
-      <td class="code">${escapeHtml(e.code || '—')}</td>
-      <td class="time">${e.timeUtc ? formatDateUTC(e.timeUtc) + ' <small>UTC</small>' : ''}</td>
-      <td><pre>${escapeHtml((e.serviceMessage || '').replace(/\n\s*\n/g, '\n'))}</pre></td>
-    </tr>
-  `).join('');
+function timeAgo(input) {
+  const sec = Math.max(0, Math.round((Date.now() - new Date(input)) / 1000));
+  if (sec < 60) return 'just now';
+  const min = Math.round(sec / 60);
+  if (min < 60) return `${min} min ago`;
+  const h = Math.round(min / 60);
+  if (h < 24) return `${h} h ago`;
+  return `${Math.round(h / 24)} d ago`;
 }
 
-// JSONP-запрос; если скрипт не загрузился или упал, покажем причину на странице
+function setOnline(ok, text) {
+  live.classList.toggle('off', !ok);
+  liveText.textContent = text;
+}
+
+function showError(text) {
+  statusEl.textContent = text;
+  statusEl.classList.add('show');
+  setOnline(false, 'Offline');
+}
+
+function render() {
+  if (!entries.length) {
+    list.innerHTML = `<div class="empty">No codes yet. Request a login code in the app and it will appear here.</div>`;
+    return;
+  }
+  list.innerHTML = entries.map((e, i) => {
+    const code = e.code || '—';
+    const msg = (e.serviceMessage || '').replace(/\n\s*\n/g, '\n').trim();
+    return `
+    <article class="code-card${i === 0 ? ' latest' : ''}">
+      <div class="code-value">${escapeHtml(code)}</div>
+      <button class="copy" type="button" data-code="${escapeHtml(code)}"${e.code ? '' : ' disabled'}>Copy</button>
+      <div class="code-meta">${i === 0 ? '<span class="badge">Latest</span>' : ''}${e.timeUtc ? `${formatDateUTC(e.timeUtc)} UTC · ${timeAgo(e.timeUtc)}` : ''}</div>
+      ${msg ? `<details class="msg"><summary>Service message</summary><pre>${escapeHtml(msg)}</pre></details>` : ''}
+    </article>`;
+  }).join('');
+}
+
+// Called by the JSONP response
+function showData(data) {
+  if (data.error) {
+    showError("Error: " + data.error);
+    return;
+  }
+  statusEl.classList.remove('show');
+  statusEl.textContent = "";
+  setOnline(true, 'Live');
+  lastRef.textContent = formatDateUTC(new Date()) + " UTC";
+  entries = (data.entries || []).sort((a, b) => new Date(b.timeUtc) - new Date(a.timeUtc));
+  render();
+}
+
+// JSONP request; if the script fails to load, show the reason on the page
 function refresh() {
   const script = document.createElement('script');
   script.src = `${API_URL}?token=${encodeURIComponent(TOKEN)}&callback=showData&_=${Date.now()}`;
   script.onload = () => script.remove();
   script.onerror = () => {
-    statusEl.textContent = "Backend unreachable: check DEPLOY_ID, deployment access (Anyone) and script authorization";
+    showError("Backend unreachable: check DEPLOY_ID, deployment access (Anyone) and script authorization");
     script.remove();
   };
   document.body.appendChild(script);
 }
 
+list.addEventListener('click', async ev => {
+  const btn = ev.target.closest('.copy');
+  if (!btn || btn.disabled) return;
+  const code = btn.dataset.code;
+  try {
+    await navigator.clipboard.writeText(code);
+  } catch (e) {
+    const t = document.createElement('textarea');
+    t.value = code; document.body.appendChild(t); t.select();
+    try { document.execCommand('copy'); } catch (_) {}
+    t.remove();
+  }
+  btn.textContent = 'Copied';
+  btn.classList.add('done');
+  setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1500);
+});
+
 refresh();
-setInterval(refresh, 15000);
+setInterval(refresh, REFRESH_MS);
+// keep "x min ago" fresh between refreshes
+setInterval(() => { if (entries.length && !document.querySelector('.copy.done')) render(); }, 30000);
 </script>
 </body>
 </html>
