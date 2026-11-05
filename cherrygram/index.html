@@ -334,10 +334,10 @@
   .appicon-big img { width: 132px; height: 132px; display: block; filter: drop-shadow(0 14px 28px rgba(63, 13, 27, .25)); }
   .appicon-name { font-weight: 600; font-size: 15px; }
   .appicons { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; justify-items: center; }
-  .appicons button { padding: 4px; border: 2px solid transparent; border-radius: 50%; background: none; cursor: pointer; line-height: 0; transition: transform .15s; }
+  .appicons button { width: 100%; max-width: 64px; aspect-ratio: 1; padding: 4px; border: 2px solid transparent; border-radius: 50%; background: none; cursor: pointer; line-height: 0; display: grid; place-items: center; transition: transform .15s; }
   .appicons button:hover { transform: scale(1.06); }
   .appicons button[aria-checked="true"] { border-color: var(--cherry); }
-  .appicons img { width: 52px; height: 52px; max-width: 100%; border-radius: 50%; box-shadow: 0 0 0 1px var(--line); }
+  .appicons img { width: 100%; height: auto; aspect-ratio: 1; border-radius: 50%; box-shadow: 0 0 0 1px var(--line); }
   .appicon-big img { border-radius: 50%; box-shadow: 0 0 0 1px var(--line); }
   @media (prefers-reduced-motion: reduce) { .appicons button { transition: none; } .appicons button:hover { transform: none; } }
 
@@ -606,7 +606,7 @@
 
       <!-- iOS -->
       <article class="tile t-ios">
-        <span class="tag"><span data-l="en">iOS style</span><span data-l="ru">Стиль iOS</span></span>
+        <span class="tag"><span data-l="en">iOS-styled</span><span data-l="ru">Стиль iOS</span></span>
         <h3><span data-l="en">The best of Telegram for iOS, on Android</span><span data-l="ru">Лучшее из Telegram для iOS на Android</span></h3>
         <div class="ios-demo" aria-hidden="true">
           <div class="io-row io-top">
@@ -623,7 +623,7 @@
         <ul class="ticks">
           <li><span data-l="en">Chat title centered in its own pill, separate from the back button and avatar</span><span data-l="ru">Заголовок чата по центру в отдельной капсуле, отдельно от кнопки «назад» и аватарки</span></li>
           <li><span data-l="en">Input field with the attach button on the left and buttons in separate bubbles</span><span data-l="ru">Поле ввода: вложения слева, кнопки в отдельных пузырях</span></li>
-          <li><span data-l="en">iOS-style unread counter on the back button and iOS notification sound</span><span data-l="ru">Счётчик непрочитанных на кнопке «назад» и звук уведомлений как в iOS</span></li>
+          <li><span data-l="en">iOS-styled unread counter on the back button and iOS notification sound</span><span data-l="ru">Счётчик непрочитанных на кнопке «назад» и звук уведомлений как в iOS</span></li>
         </ul>
       </article>
 
@@ -826,7 +826,7 @@
       <ul class="perks">
         <li>
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5.66 4.5C4.03 5.25 2.83 7.02 2.83 9.14c0 2.17 0.9 3.84 2.17 5.28 1.06 1.2 2.34 2.18 3.59 3.15 0.3 0.23 0.6 0.45 0.89 0.69 0.53 0.41 0.99 0.77 1.44 1.03 0.44 0.26 0.8 0.38 1.08 0.38 0.29 0 0.64-0.12 1.08-0.38 0.45-0.26 0.91-0.62 1.44-1.03l0.89-0.7c1.25-0.96 2.53-1.95 3.59-3.14 1.28-1.44 2.16-3.11 2.16-5.28 0-2.12-1.2-3.9-2.82-4.64-1.57-0.72-3.7-0.54-5.74 1.58-0.16 0.16-0.37 0.26-0.6 0.26-0.23 0-0.44-0.1-0.6-0.26-2.04-2.12-4.17-2.3-5.74-1.58ZM12 4.35C9.68 2.3 7.08 2.02 4.97 2.98c-2.25 1.03-3.8 3.41-3.8 6.16 0 2.69 1.12 4.74 2.58 6.4 1.18 1.31 2.61 2.42 3.87 3.39l0.82 0.64c0.52 0.4 1.07 0.83 1.63 1.16 0.57 0.33 1.22 0.6 1.93 0.6s1.36-0.27 1.93-0.6c0.56-0.33 1.11-0.76 1.63-1.16l0.82-0.64c1.26-0.97 2.7-2.08 3.87-3.4 1.46-1.65 2.59-3.7 2.59-6.4 0-2.74-1.56-5.12-3.8-6.15C16.91 2.02 14.31 2.3 12 4.35Z" fill="currentColor" fill-rule="evenodd" stroke="none"/></svg>
-          <b><span data-l="en">iOS-style message menu</span><span data-l="ru">Меню сообщений в стиле iOS</span></b>
+          <b><span data-l="en">iOS-styled message menu</span><span data-l="ru">Меню сообщений в стиле iOS</span></b>
           <span><span data-l="en">Blurred background and reactions above the message, like Telegram on iOS.</span><span data-l="ru">Размытый фон и реакции над сообщением, как в Telegram на iOS.</span></span>
         </li>
         <li>
