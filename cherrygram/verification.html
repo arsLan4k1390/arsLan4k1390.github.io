@@ -237,16 +237,22 @@
   @media (prefers-reduced-motion: reduce) { .theme-menu { transition: none; } }
   .lang .ls { display: none; }
   @media (max-width: 420px) { .lang .lf { display: none; } .lang .ls { display: inline; } .lang button { padding: 6px 12px; } }
+
+  a.brand { color: var(--text); text-decoration: none; }
+  a.brand:hover { text-decoration: none; }
+  footer .foot-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px 18px; margin-top: 8px; }
+  footer .foot-links a { color: var(--muted); font-weight: 500; }
+  footer .foot-links a:hover { color: var(--cherry); }
 </style>
 </head>
 <body>
 <div class="wrap">
 
   <div class="top">
-    <div class="brand">
+    <a class="brand" href="./">
       <svg class="brand-logo" aria-hidden="true" width="32" height="32" viewBox="0 0 640 640" fill="none" xmlns="http://www.w3.org/2000/svg"> <rect x="10" y="10" width="620" height="620" rx="310" fill="url(#cgLogoGrad)"/> <rect x="10" y="10" width="620" height="620" rx="310" stroke="white" stroke-width="20"/> <path d="M383.323 127.493C386.815 134.41 384.44 142.785 377.801 146.963C373.574 149.623 369.834 152.233 366.529 154.789C405.644 156.688 451.546 172.465 475.197 246.991C393.397 254.55 361.271 217.003 344.844 181.58C343.745 184.75 343.19 187.771 343.002 190.632C342.13 203.923 348.677 218.798 360.499 236.478C365.873 244.516 371.896 252.518 378.143 260.817L379.523 262.651C386.133 271.438 392.978 280.61 398.766 289.741C402.809 296.118 406.721 303.047 409.709 310.361C450.216 318.1 480.781 352.949 480.781 394.77C480.781 442.272 441.345 480.781 392.697 480.781C344.049 480.781 304.613 442.272 304.613 394.77C304.613 353.111 334.942 318.37 375.215 310.452C374.326 308.925 373.365 307.348 372.333 305.719C367.287 297.76 361.155 289.512 354.468 280.622L352.991 278.661C346.854 270.51 340.335 261.85 334.467 253.074C322.838 235.682 311.869 215.189 311.837 193.102C301.707 204.276 292.418 216.728 284.179 229.828C266.513 257.916 254.87 287.06 250.081 309.663C266.62 312.019 281.668 318.863 293.887 328.889C294.088 329.054 294.127 329.346 293.979 329.56C281.067 348.161 273.524 370.605 273.524 394.77C273.524 418.934 281.067 441.378 293.979 459.979C294.127 460.193 294.088 460.485 293.887 460.65C278.575 473.214 258.819 480.781 237.254 480.781C188.607 480.781 149.17 442.272 149.17 394.77C149.17 353.631 178.747 319.238 218.27 310.761C223.03 282.071 237.237 246.456 257.688 213.941C282.73 174.126 319.229 135.606 364.144 119.913C371.58 117.315 379.83 120.575 383.323 127.493Z" fill="white"/> <defs> <linearGradient id="cgLogoGrad" x1="640" y1="0" x2="0" y2="640" gradientUnits="userSpaceOnUse"> <stop offset="0.09375" stop-color="#E64C7F"/> <stop offset="0.447917" stop-color="#872847"/> <stop offset="0.833333" stop-color="#3F0D1B"/> </linearGradient> </defs> </svg>
       Cherrygram
-    </div>
+    </a>
     <div class="controls">
       <div class="theme-wrap">
         <button type="button" class="theme" id="themeBtn" aria-haspopup="menu" aria-expanded="false" aria-controls="themeMenu">
@@ -286,7 +292,14 @@
 
   <p class="hint"><span data-l="en">All times are in UTC.</span><span data-l="ru">Всё время указано в UTC.</span></p>
 
-  <footer>© Cherrygram</footer>
+  <footer>
+    <div>© 2022–2026 arsLan4k1390 · <span data-l="en">Cherrygram is an unofficial app and is not affiliated with Telegram FZ-LLC.</span><span data-l="ru">Cherrygram — неофициальное приложение и не связано с Telegram FZ-LLC.</span></div>
+    <nav class="foot-links" aria-label="Site">
+      <a href="./"><span data-l="en">Home</span><span data-l="ru">Главная</span></a>
+      <a href="privacy.html"><span data-l="en">Privacy policy</span><span data-l="ru">Политика конфиденциальности</span></a>
+      <a href="donation-terms.html"><span data-l="en">Donation terms</span><span data-l="ru">Условия доната</span></a>
+    </nav>
+  </footer>
 </div>
 
 <script>
