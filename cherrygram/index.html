@@ -330,7 +330,14 @@
   .panel { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 28px; min-width: 0; display: flex; flex-direction: column; gap: 20px; }
   .panel-head h3 { font-family: var(--f-display); font-weight: 700; font-size: 22px; letter-spacing: -0.02em; margin: 0 0 6px; }
   .panel-head p { margin: 0; color: var(--muted); font-size: 15px; }
-  .appicon-stage { display: grid; justify-items: center; gap: 10px; padding: 22px 0 8px; border-radius: 18px; background: radial-gradient(circle at 50% 40%, var(--cherry-soft), transparent 65%); }
+  .appicon-stage { display: grid; justify-items: center; gap: 10px; padding: 22px 0 8px; position: relative; isolation: isolate; }
+  .appicon-big { position: relative; }
+  .appicon-big { --icon-rgb: 128, 38, 67; --glow-rgb: var(--icon-rgb-light, var(--icon-rgb)); --glow-a: .55; }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .appicon-big { --glow-rgb: var(--icon-rgb); --glow-a: .55; } }
+  :root[data-theme="dark"] .appicon-big { --glow-rgb: var(--icon-rgb); --glow-a: .55; }
+  .appicon-big::before { content: ""; position: absolute; z-index: -1; left: 50%; top: 50%; width: 300px; height: 300px; transform: translate(-50%, -50%); border-radius: 50%; pointer-events: none;
+    background-color: rgba(var(--glow-rgb), var(--glow-a)); -webkit-mask: radial-gradient(closest-side, #000, transparent); mask: radial-gradient(closest-side, #000, transparent); transition: background-color .35s ease; }
+  @media (prefers-reduced-motion: reduce) { .appicon-big::before { transition: none; } }
   .appicon-big img { width: 132px; height: 132px; display: block; filter: drop-shadow(0 14px 28px rgba(63, 13, 27, .25)); }
   .appicon-name { font-weight: 600; font-size: 15px; }
   .appicons { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; justify-items: center; }
@@ -338,7 +345,7 @@
   .appicons button:hover { transform: scale(1.06); }
   .appicons button[aria-checked="true"] { border-color: var(--cherry); }
   .appicons img { width: 100%; height: auto; aspect-ratio: 1; border-radius: 50%; box-shadow: 0 0 0 1px var(--line); }
-  .appicon-big img { border-radius: 50%; box-shadow: 0 0 0 1px var(--line); }
+  .appicon-big img { border-radius: 50%; }
   @media (prefers-reduced-motion: reduce) { .appicons button { transition: none; } .appicons button:hover { transform: none; } }
 
   .seg { display: inline-flex; align-self: flex-start; background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 3px; }
@@ -689,16 +696,16 @@
           <div class="appicon-name" id="bigName"><span data-l="en">Default</span><span data-l="ru">Стандартная</span></div>
         </div>
         <div class="appicons" role="radiogroup" aria-label="App icon">
-          <button type="button" role="radio" aria-checked="true" data-icon="default" data-en="Default" data-ru="Стандартная"><img src="img/icons/default.svg" alt="" width="52" height="52"></button>
-          <button type="button" role="radio" aria-checked="false" data-icon="new-year" data-en="New Year" data-ru="Новогодняя"><img src="img/icons/new-year.svg" alt="" width="52" height="52"></button>
-          <button type="button" role="radio" aria-checked="false" data-icon="dark" data-en="Dark" data-ru="Тёмная"><img src="img/icons/dark.svg" alt="" width="52" height="52"></button>
-          <button type="button" role="radio" aria-checked="false" data-icon="white" data-en="White" data-ru="Белая"><img src="img/icons/white.svg" alt="" width="52" height="52"></button>
-          <button type="button" role="radio" aria-checked="false" data-icon="laguna" data-en="Laguna" data-ru="Лагуна"><img src="img/icons/laguna.svg" alt="" width="52" height="52"></button>
-          <button type="button" role="radio" aria-checked="false" data-icon="green" data-en="Green" data-ru="Зелёная"><img src="img/icons/green.svg" alt="" width="52" height="52"></button>
-          <button type="button" role="radio" aria-checked="false" data-icon="lavanda" data-en="Lavanda" data-ru="Лаванда"><img src="img/icons/lavanda.svg" alt="" width="52" height="52"></button>
-          <button type="button" role="radio" aria-checked="false" data-icon="violet-sunset" data-en="Violet Sunset" data-ru="Violet Sunset"><img src="img/icons/violet-sunset.svg" alt="" width="52" height="52"></button>
-          <button type="button" role="radio" aria-checked="false" data-icon="sunset" data-en="Sunset" data-ru="Закат"><img src="img/icons/sunset.svg" alt="" width="52" height="52"></button>
-          <button type="button" role="radio" aria-checked="false" data-icon="sunrise" data-en="Sunrise" data-ru="Восход"><img src="img/icons/sunrise.svg" alt="" width="52" height="52"></button>
+          <button type="button" role="radio" aria-checked="true" data-icon="default" data-c="128,38,67" data-en="Default" data-ru="Стандартная"><img src="img/icons/default.svg" alt="" width="52" height="52"></button>
+          <button type="button" role="radio" aria-checked="false" data-icon="new-year" data-c="120,120,120" data-cl="30,30,30" data-en="New Year" data-ru="Новогодняя"><img src="img/icons/new-year.svg" alt="" width="52" height="52"></button>
+          <button type="button" role="radio" aria-checked="false" data-icon="dark" data-c="110,110,110" data-cl="20,20,20" data-en="Dark" data-ru="Тёмная"><img src="img/icons/dark.svg" alt="" width="52" height="52"></button>
+          <button type="button" role="radio" aria-checked="false" data-icon="white" data-c="200,56,95" data-en="White" data-ru="Белая"><img src="img/icons/white.svg" alt="" width="52" height="52"></button>
+          <button type="button" role="radio" aria-checked="false" data-icon="laguna" data-c="17,93,129" data-en="Laguna" data-ru="Лагуна"><img src="img/icons/laguna.svg" alt="" width="52" height="52"></button>
+          <button type="button" role="radio" aria-checked="false" data-icon="green" data-c="46,140,131" data-en="Green" data-ru="Зелёная"><img src="img/icons/green.svg" alt="" width="52" height="52"></button>
+          <button type="button" role="radio" aria-checked="false" data-icon="lavanda" data-c="120,68,125" data-en="Lavanda" data-ru="Лаванда"><img src="img/icons/lavanda.svg" alt="" width="52" height="52"></button>
+          <button type="button" role="radio" aria-checked="false" data-icon="violet-sunset" data-c="145,46,110" data-en="Violet Sunset" data-ru="Violet Sunset"><img src="img/icons/violet-sunset.svg" alt="" width="52" height="52"></button>
+          <button type="button" role="radio" aria-checked="false" data-icon="sunset" data-c="193,122,208" data-en="Sunset" data-ru="Закат"><img src="img/icons/sunset.svg" alt="" width="52" height="52"></button>
+          <button type="button" role="radio" aria-checked="false" data-icon="sunrise" data-c="183,88,126" data-en="Sunrise" data-ru="Восход"><img src="img/icons/sunrise.svg" alt="" width="52" height="52"></button>
         </div>
       </div>
 
@@ -1045,6 +1052,8 @@
   function pick(b) {
     btns.forEach(function (x) { x.setAttribute('aria-checked', String(x === b)); });
     big.src = 'img/icons/' + b.dataset.icon + '.svg';
+    big.parentNode.style.setProperty('--icon-rgb', b.dataset.c);
+    if (b.dataset.cl) big.parentNode.style.setProperty('--icon-rgb-light', b.dataset.cl); else big.parentNode.style.removeProperty('--icon-rgb-light');
     name.innerHTML = '<span data-l="en">' + b.dataset.en + '</span><span data-l="ru">' + b.dataset.ru + '</span>';
   }
   btns.forEach(function (b) { b.addEventListener('click', function () { pick(b); }); });
