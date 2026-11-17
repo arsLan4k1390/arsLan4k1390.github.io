@@ -397,6 +397,14 @@
   @media (max-width: 520px) { .perks { grid-template-columns: 1fr; } }
 
   /* Downloads */
+  .more-stores { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 12px; margin-top: 14px; }
+  .ms-label { color: var(--muted); font-size: 14.5px; margin-right: 4px; }
+  .ms { display: inline-flex; align-items: center; gap: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 14px; background: var(--card); color: var(--text); font-size: 15px; }
+  .ms:hover { text-decoration: none; border-color: var(--cherry-line); background: var(--cherry-soft); }
+  .ms > svg:first-child { width: 22px; height: 22px; color: var(--cherry); display: block; }
+  .ms-go { width: 15px; height: 15px; stroke: var(--muted); fill: none; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+  @media (max-width: 520px) { .ms-label { width: 100%; } .ms { flex: 1 1 auto; justify-content: center; } }
+
   .dl { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 14px; }
   .route { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 12px; min-width: 0; color: var(--text); font-weight: 400; transition: border-color .15s, transform .15s; }
   .route:hover { text-decoration: none; border-color: var(--cherry-line); transform: translateY(-2px); }
@@ -899,9 +907,15 @@
       </a>
     </div>
 
+    <div class="more-stores">
+      <span class="ms-label"><span data-l="en">Also in app catalogs</span><span data-l="ru">Также в каталогах приложений</span></span>
+      <a class="ms" href="https://cherrygram.en.aptoide.com/app" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 22H2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="miter"/><path d="M20 22V11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="miter"/><path d="M4 22V11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="miter"/><path d="M16.53 2H7.47c-1.2 0-1.8 0-2.29 0.3C4.7 2.6 4.43 3.14 3.9 4.2L2.5 7.76c-0.32 0.82-0.6 1.79-0.06 2.48C2.79 10.7 3.36 11 4 11c1.1 0 2-0.9 2-2 0 1.1 0.9 2 2 2s2-0.9 2-2c0 1.1 0.9 2 2 2s2-0.9 2-2c0 1.1 0.9 2 2 2s2-0.9 2-2c0 1.1 0.9 2 2 2 0.64 0 1.2-0.3 1.57-0.76 0.55-0.7 0.26-1.66-0.06-2.48L20.1 4.2C19.57 3.14 19.3 2.6 18.8 2.3 18.34 2 17.74 2 16.54 2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="round"/><path d="M9.5 21.5v-3c0-0.93 0-1.4 0.2-1.75 0.13-0.23 0.32-0.42 0.55-0.55C10.6 16 11.07 16 12 16s1.4 0 1.75 0.2c0.23 0.13 0.42 0.32 0.55 0.55 0.2 0.35 0.2 0.82 0.2 1.75v3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="miter"/></svg><span>Aptoide</span><svg class="ms-go" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+      <a class="ms" href="https://apkpure.com/p/uz.unnarsx.cherrygram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 22H2" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="miter"/><path d="M20 22V11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="miter"/><path d="M4 22V11" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="miter"/><path d="M16.53 2H7.47c-1.2 0-1.8 0-2.29 0.3C4.7 2.6 4.43 3.14 3.9 4.2L2.5 7.76c-0.32 0.82-0.6 1.79-0.06 2.48C2.79 10.7 3.36 11 4 11c1.1 0 2-0.9 2-2 0 1.1 0.9 2 2 2s2-0.9 2-2c0 1.1 0.9 2 2 2s2-0.9 2-2c0 1.1 0.9 2 2 2s2-0.9 2-2c0 1.1 0.9 2 2 2 0.64 0 1.2-0.3 1.57-0.76 0.55-0.7 0.26-1.66-0.06-2.48L20.1 4.2C19.57 3.14 19.3 2.6 18.8 2.3 18.34 2 17.74 2 16.54 2Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="butt" stroke-linejoin="round"/><path d="M9.5 21.5v-3c0-0.93 0-1.4 0.2-1.75 0.13-0.23 0.32-0.42 0.55-0.55C10.6 16 11.07 16 12 16s1.4 0 1.75 0.2c0.23 0.13 0.42 0.32 0.55 0.55 0.2 0.35 0.2 0.82 0.2 1.75v3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="miter"/></svg><span>APKPure</span><svg class="ms-go" viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></a>
+    </div>
+
     <div class="warn" role="note">
       <svg viewBox="0 0 24 24"><path d="M12 3 2 20h20zM12 10v4M12 17h.01"/></svg>
-      <p><span data-l="en"><b>Only these three sources are official.</b> Copies in other stores, including RuStore, are uploaded by third parties. They are not supported, and we can't vouch for what's inside.</span><span data-l="ru"><b>Официальные источники только эти три.</b> Копии в других магазинах, в том числе в RuStore, загружают третьи лица. Они не поддерживаются, и мы не можем ручаться за их содержимое.</span></p>
+      <p><span data-l="en"><b>Only the sources above are official.</b> Copies in other stores, including RuStore, are uploaded by third parties. They are not supported, and we can't vouch for what's inside.</span><span data-l="ru"><b>Официальные источники только те, что выше.</b> Копии в других магазинах, в том числе в RuStore, загружают третьи лица. Они не поддерживаются, и мы не можем ручаться за их содержимое.</span></p>
     </div>
   </section>
 
